@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Токио и окрестности | Japan Journey 2026</title>
+    <style>
+        :root {
+            --color-primary: #667eea;
+            --color-primary-light: #8b9ef7;
+            --color-primary-dark: #4f5fcf;
+            --color-accent: #764ba2;
+            --color-bg: #f8f9fa;
+            --color-surface: #ffffff;
+            --color-text: #1a1a2e;
+            --color-text-light: #505565;
+            --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.08);
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --radius-lg: 32px;
+            --radius-md: 24px;
+            --radius-sm: 16px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-bg: #0f0f1e;
+                --color-surface: #1a1a2e;
+                --color-text: #e0e0e0;
+                --color-text-light: #a8a8b8;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--color-bg);
+            color: var(--color-text);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-text-light);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .destination-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--color-text);
+        }
+
+        .card-description {
+            color: var(--color-text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlights {
+            margin-top: 1.5rem;
+        }
+
+        .highlights h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--color-primary);
+        }
+
+        .highlights ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlights li {
+            padding: 0.5rem 0;
+            color: var(--color-text-light);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            margin: 2rem auto;
+            display: block;
+            max-width: 300px;
+        }
+
+        .back-button:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-3px);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 80px;
+            }
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-brand">日本 Journey</a>
+        <a href="index.html">← Назад к главной</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🗼 Токио и окрестности</h1>
+            <p class="hero-subtitle">Футуристическая столица, священная гора Фудзи и термальные источники</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">Группа 1: Регион Токио</h2>
+        <p class="section-subtitle">Идеальное сочетание ультрасовременной городской жизни и природных красот</p>
+
+        <div class="destinations-grid">
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop" alt="Токио">
+                <div class="card-content">
+                    <h3 class="card-title">Токио — мегаполис будущего</h3>
+                    <p class="card-description">Столица Японии, где традиционные храмы соседствуют с неоновыми небоскрёбами. Токио — это эпицентр технологий, моды, поп-культуры и высокой кухни.</p>
+                    
+                    <div class="highlights">
+                        <h4>🎯 Главные достопримечательности:</h4>
+                        <ul>
+                            <li><strong>Сибуя</strong> — знаменитый перекрёсток и статуя Хатико</li>
+                            <li><strong>Асакуса</strong> — древний храм Сэнсодзи и улица Накамисэ</li>
+                            <li><strong>Tokyo Skytree</strong> — самая высокая башня Японии (634м)</li>
+                            <li><strong>Акихабара</strong> — район электроники и аниме-культуры</li>
+                            <li><strong>Синдзюку</strong> — развлекательный квартал и правительственные здания</li>
+                            <li><strong>Харадзюку</strong> — центр молодёжной моды и креатива</li>
+                            <li><strong>Одайба</strong> — искусственный остров с торговыми центрами</li>
+                            <li><strong>Рынок Цукидзи</strong> — свежайшие морепродукты и суши</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlights">
+                        <h4>⏰ Рекомендуемое время: 3-4 дня</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1570977773925-1e46d21e31e6?w=800&h=600&fit=crop" alt="Фудзи">
+                <div class="card-content">
+                    <h3 class="card-title">Гора Фудзи — символ Японии</h3>
+                    <p class="card-description">Величественная священная гора высотой 3776 метров, видимая из Токио в ясную погоду. Объект Всемирного наследия ЮНЕСКО и самая узнаваемая природная достопримечательность страны.</p>
+                    
+                    <div class="highlights">
+                        <h4>🎯 Чем заняться:</h4>
+                        <ul>
+                            <li><strong>Пять озёр Фудзи</strong> — живописные виды на гору</li>
+                            <li><strong>Пагода Чурэйто</strong> — классический вид с сакурой</li>
+                            <li><strong>Треккинг</strong> — восхождение (сезон июль-август)</li>
+                            <li><strong>Смотровые площадки</strong> — 5-я станция на высоте 2300м</li>
+                            <li><strong>Озеро Кавагутико</strong> — зеркальное отражение Фудзи</li>
+                            <li><strong>Лавандовые поля</strong> — в окрестностях летом</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlights">
+                        <h4>⏰ Рекомендуемое время: 1-2 дня</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1581367439325-501e9c6b6c90?w=800&h=600&fit=crop" alt="Хаконэ">
+                <div class="card-content">
+                    <h3 class="card-title">Хаконэ — термальный рай</h3>
+                    <p class="card-description">Горный курортный регион, знаменитый горячими источниками онсэн, видами на Фудзи и природными красотами. Идеальное место для релаксации после насыщенного Токио.</p>
+                    
+                    <div class="highlights">
+                        <h4>🎯 Главные достопримечательности:</h4>
+                        <ul>
+                            <li><strong>Озеро Аси</strong> — круиз на пиратском корабле с видом на Фудзи</li>
+                            <li><strong>Канатная дорога Хаконэ</strong> — над кипящей серной долиной</li>
+                            <li><strong>Овакудани</strong> — вулканическая долина с чёрными яйцами</li>
+                            <li><strong>Традиционный рёкан</strong> — проживание с татами и фуро</li>
+                            <li><strong>Онсэн</strong> — купание в природных горячих источниках</li>
+                            <li><strong>Музей под открытым небом</strong> — современное искусство</li>
+                            <li><strong>Святилище Хаконэ</strong> — красные тории у озера</li>
+                            <li><strong>Hakone Checkpoint</strong> — историческая застава периода Эдо</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlights">
+                        <h4>⏰ Рекомендуемое время: 1-2 дня</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: var(--color-surface); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); margin-bottom: 3rem;">
+            <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--color-primary);">🚄 Как перемещаться</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <strong>Токио → Фудзи:</strong> JR Limited Express до станции Otsuki + Fujikyu Railway (2.5 часа) или автобус (2 часа)
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <strong>Токио → Хаконэ:</strong> Romance Car от Shinjuku (1.5 часа) или JR + Hakone Tozan Railway (2 часа)
+                </li>
+                <li style="padding: 1rem 0;">
+                    <strong>JR Pass:</strong> Покрывает большинство маршрутов, кроме Romance Car (нужен доп. билет)
+                </li>
+            </ul>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 3rem; border-radius: var(--radius-lg); color: white; text-align: center; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">💡 Совет путешественнику</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.95;">
+                Купите <strong>Hakone Free Pass</strong> (2-3 дня) — безлимитный проезд на всех видах транспорта в регионе Хаконэ (канатная дорога, корабль, автобусы, поезда) + скидки на онсэн и музеи. Идеально подходит для исследования региона.
+            </p>
+        </div>
+
+        <a href="index.html" class="back-button">← Вернуться к главной странице</a>
+    </div>
+</body>
+</html>

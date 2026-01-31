@@ -5,26 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Хиросима | Japan Journey 2026</title>
     <style>
-        :root {
-            --color-bg: #20b2aa;
-            --color-text: #ffffff;
-            --color-text-light: rgba(255, 255, 255, 0.9);
-            --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.12);
-            --radius-md: 24px;
-            --radius-sm: 16px;
-        }
+        :root { --color-bg: #20b2aa; --color-text: #fff; --color-text-light: rgba(255,255,255,0.9); --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; --shadow: 0 10px 30px rgba(0,0,0,0.12); --radius-md: 24px; --radius-sm: 16px; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-main); background: var(--color-bg); color: var(--color-text); line-height: 1.7; }
         .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
         .back-link { display: inline-block; margin-bottom: 2rem; color: #fff; text-decoration: none; font-weight: 600; }
         .back-link:hover { text-decoration: underline; }
-        .city-hero { width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 2rem; box-shadow: var(--shadow-card); }
+        .city-hero { width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 2rem; box-shadow: var(--shadow); }
         .city-badge { display: inline-block; background: #ff6b35; color: white; padding: 0.4rem 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
         h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #fff; }
-        .city-description { color: var(--color-text-light); margin-bottom: 1.5rem; font-size: 1.1rem; }
-        .city-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; color: #fff; }
+        .city-description, .city-text { color: var(--color-text-light); margin-bottom: 1rem; font-size: 1.05rem; }
+        .city-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
         .tag { padding: 0.4rem 1rem; background: rgba(255,255,255,0.2); color: #fff; border-radius: var(--radius-sm); font-size: 0.85rem; }
+        .detail-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .detail-card { background: rgba(255,255,255,0.15); border-radius: var(--radius-md); padding: 1.5rem; text-decoration: none; color: #fff; display: block; transition: background 0.2s; border: 1px solid rgba(255,255,255,0.2); }
+        .detail-card:hover { background: rgba(255,255,255,0.25); }
+        .detail-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .detail-card p { font-size: 0.95rem; color: var(--color-text-light); }
     </style>
 </head>
 <body>
@@ -33,11 +31,26 @@
         <img src="https://images.unsplash.com/photo-1624253321170-8595a43ad34c?w=1200&h=600&fit=crop" alt="Хиросима" class="city-hero">
         <span class="city-badge">История</span>
         <h1>Хиросима</h1>
-        <p class="city-description">Город мира и памяти с Мемориальным парком. Недалеко находится священный остров Миядзима с плавучими воротами тории в море.</p>
+        <p class="city-description">Хиросима — город мира и памяти. 6 августа 1945 года здесь была сброшена атомная бомба; сегодня Мемориальный парк мира и Атомный купол напоминают о трагедии и призывают к миру. Рядом — священный остров Миядзима с плавучими воротами тории в море, один из символов Японии.</p>
         <div class="city-tags">
             <span class="tag">Мемориалы</span>
             <span class="tag">Миядзима</span>
             <span class="tag">Мир</span>
+        </div>
+
+        <h2>О городе</h2>
+        <p class="city-text">Хиросима расположена на западе Японии, в регионе Тюгоку. Население около 1,2 млн человек. Город восстановился после войны и стал символом мира. Из Хиросимы удобно добираться до Миядзимы (паром около 10 минут от Миядзимагути). Лучшее время — весна и осень; летом жарко. Окономияки в хиросимском стиле (со слоями лапши) — местный специалитет.</p>
+
+        <h2>Подробнее</h2>
+        <div class="detail-cards">
+            <a href="hiroshima-sights.html" class="detail-card">
+                <h3>Что посмотреть</h3>
+                <p>Мемориальный парк, Атомный купол, Миядзима и главные достопримечательности.</p>
+            </a>
+            <a href="hiroshima-shopping.html" class="detail-card">
+                <h3>Где купить</h3>
+                <p>Сувениры мира, окономияки-соусы, устрицы и подарки из Хиросимы.</p>
+            </a>
         </div>
     </div>
 </body>

@@ -5,27 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Токио | Japan Journey 2026</title>
     <style>
-        :root {
-            --color-bg: #20b2aa;
-            --color-surface: #ffffff;
-            --color-text: #ffffff;
-            --color-text-light: rgba(255, 255, 255, 0.9);
-            --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.12);
-            --radius-md: 24px;
-            --radius-sm: 16px;
-        }
+        :root { --color-bg: #20b2aa; --color-text: #fff; --color-text-light: rgba(255,255,255,0.9); --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; --shadow: 0 10px 30px rgba(0,0,0,0.12); --radius-md: 24px; --radius-sm: 16px; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-main); background: var(--color-bg); color: var(--color-text); line-height: 1.7; }
         .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
         .back-link { display: inline-block; margin-bottom: 2rem; color: #fff; text-decoration: none; font-weight: 600; }
         .back-link:hover { text-decoration: underline; }
-        .city-hero { width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 2rem; box-shadow: var(--shadow-card); }
+        .city-hero { width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 2rem; box-shadow: var(--shadow); }
         .city-badge { display: inline-block; background: #ff6b35; color: white; padding: 0.4rem 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
         h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #fff; }
-        .city-description { color: var(--color-text-light); margin-bottom: 1.5rem; font-size: 1.1rem; }
-        .city-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; color: #fff; }
+        .city-description, .city-text { color: var(--color-text-light); margin-bottom: 1rem; font-size: 1.05rem; }
+        .city-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
         .tag { padding: 0.4rem 1rem; background: rgba(255,255,255,0.2); color: #fff; border-radius: var(--radius-sm); font-size: 0.85rem; }
+        .detail-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .detail-card { background: rgba(255,255,255,0.15); border-radius: var(--radius-md); padding: 1.5rem; text-decoration: none; color: #fff; display: block; transition: background 0.2s; border: 1px solid rgba(255,255,255,0.2); }
+        .detail-card:hover { background: rgba(255,255,255,0.25); }
+        .detail-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .detail-card p { font-size: 0.95rem; color: var(--color-text-light); }
     </style>
 </head>
 <body>
@@ -34,11 +31,26 @@
         <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&h=600&fit=crop" alt="Токио" class="city-hero">
         <span class="city-badge">Мегаполис</span>
         <h1>Токио</h1>
-        <p class="city-description">Футуристическая столица, где неоновые небоскрёбы соседствуют с древними храмами. Сибуя, Акихабара и традиционные сады создают уникальный контраст.</p>
+        <p class="city-description">Токио — столица Японии и один из крупнейших мегаполисов мира. Здесь футуристические небоскрёбы и неоновые вывески соседствуют с древними храмами и тихими садами. Город объединяет 23 специальных района, каждый со своим характером: от технологической Мекки Акихабары до модного Сибуя и традиционного Асакусы.</p>
         <div class="city-tags">
             <span class="tag">Технологии</span>
             <span class="tag">Культура</span>
             <span class="tag">Гастрономия</span>
+        </div>
+
+        <h2>О городе</h2>
+        <p class="city-text">Население столичного региона превышает 37 миллионов человек. Токио — главный экономический и культурный центр страны: здесь находятся императорский дворец, правительство, штаб-квартиры крупнейших компаний, а также бесчисленные музеи, театры и рестораны. Общественный транспорт (метро, JR, частные линии) позволяет быстро перемещаться между районами. Лучшее время для поездки — весна (цветение сакуры) и осень (момидзи).</p>
+
+        <h2>Подробнее</h2>
+        <div class="detail-cards">
+            <a href="tokyo-sights.html" class="detail-card">
+                <h3>Что посмотреть</h3>
+                <p>Храмы, районы, смотровые площадки и главные достопримечательности Токио.</p>
+            </a>
+            <a href="tokyo-shopping.html" class="detail-card">
+                <h3>Где купить</h3>
+                <p>Районы для шопинга, универмаги, электроника и сувениры.</p>
+            </a>
         </div>
     </div>
 </body>

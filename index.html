@@ -11,10 +11,10 @@
             --color-primary-dark: #0d7f7e;
             --color-accent: #ff6b35;
             --color-accent-light: #ff9066;
-            --color-bg: #f8f9fa;
+            --color-bg: #20b2aa;
             --color-surface: #ffffff;
-            --color-text: #1a1a2e;
-            --color-text-light: #505565;
+            --color-text: #ffffff;
+            --color-text-light: rgba(255, 255, 255, 0.9);
             --color-gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --color-gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --color-gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
@@ -28,10 +28,10 @@
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --color-bg: #0f0f1e;
-                --color-surface: #1a1a2e;
-                --color-text: #e0e0e0;
-                --color-text-light: #a8a8b8;
+                --color-bg: #1a9d96;
+                --color-surface: #ffffff;
+                --color-text: #ffffff;
+                --color-text-light: rgba(255, 255, 255, 0.9);
             }
         }
 
@@ -57,7 +57,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-primary-light) 100%);
+            background: var(--color-bg);
         }
 
         .hero::before {
@@ -176,10 +176,7 @@
             margin-bottom: 1rem;
             text-align: center;
             letter-spacing: -0.02em;
-            background: var(--color-gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ffffff;
         }
 
         .section-subtitle {
@@ -219,6 +216,12 @@
             margin-top: 0;
         }
 
+        .destination-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
         .card-image {
             width: 100%;
             height: 280px;
@@ -251,11 +254,11 @@
             font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 0.8rem;
-            color: var(--color-text);
+            color: #1a1a2e;
         }
 
         .card-description {
-            color: var(--color-text-light);
+            color: #505565;
             line-height: 1.7;
             margin-bottom: 1.5rem;
         }
@@ -330,11 +333,11 @@
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--color-text);
+            color: #1a1a2e;
         }
 
         .info-text {
-            color: var(--color-text-light);
+            color: #505565;
             line-height: 1.7;
         }
 
@@ -407,89 +410,101 @@
         </div>
 
         <div class="destinations-grid">
-            <div class="destination-card">
-                <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop" alt="Токио" class="card-image">
-                <div class="card-badge">Мегаполис</div>
-                <div class="card-content">
-                    <h3 class="card-title">Токио</h3>
-                    <p class="card-description">Футуристическая столица, где неоновые небоскрёбы соседствуют с древними храмами. Сибуя, Акихабара и традиционные сады создают уникальный контраст.</p>
-                    <div class="card-tags">
-                        <span class="tag">Технологии</span>
-                        <span class="tag">Культура</span>
-                        <span class="tag">Гастрономия</span>
+            <a href="tokyo.html" class="destination-link">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&h=600&fit=crop" alt="Токио" class="card-image">
+                    <div class="card-badge">Мегаполис</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Токио</h3>
+                        <p class="card-description">Футуристическая столица, где неоновые небоскрёбы соседствуют с древними храмами. Сибуя, Акихабара и традиционные сады создают уникальный контраст.</p>
+                        <div class="card-tags">
+                            <span class="tag">Технологии</span>
+                            <span class="tag">Культура</span>
+                            <span class="tag">Гастрономия</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="destination-card">
-                <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&h=600&fit=crop" alt="Киото" class="card-image">
-                <div class="card-badge">Традиции</div>
-                <div class="card-content">
-                    <h3 class="card-title">Киото</h3>
-                    <p class="card-description">Древняя столица с более чем 2000 храмов и святынь. Золотой павильон, бамбуковая роща Арасияма и традиционный район гейш Гион.</p>
-                    <div class="card-tags">
-                        <span class="tag">Храмы</span>
-                        <span class="tag">История</span>
-                        <span class="tag">Гейши</span>
+            <a href="kyoto.html" class="destination-link">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&h=600&fit=crop" alt="Киото" class="card-image">
+                    <div class="card-badge">Традиции</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Киото</h3>
+                        <p class="card-description">Древняя столица с более чем 2000 храмов и святынь. Золотой павильон, бамбуковая роща Арасияма и традиционный район гейш Гион.</p>
+                        <div class="card-tags">
+                            <span class="tag">Храмы</span>
+                            <span class="tag">История</span>
+                            <span class="tag">Гейши</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="destination-card">
-                <img src="https://images.unsplash.com/photo-1570977773925-1e46d21e31e6?w=800&h=600&fit=crop" alt="Фудзи" class="card-image">
-                <div class="card-badge">Природа</div>
-                <div class="card-content">
-                    <h3 class="card-title">Гора Фудзи</h3>
-                    <p class="card-description">Священный символ Японии высотой 3776 метров. Пять озёр у подножия горы и термальные источники онсэн создают идеальное место для релаксации.</p>
-                    <div class="card-tags">
-                        <span class="tag">Треккинг</span>
-                        <span class="tag">Онсэн</span>
-                        <span class="tag">Виды</span>
+            <a href="fuji.html" class="destination-link">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1570977773925-1e46d21e31e6?w=800&h=600&fit=crop" alt="Фудзи" class="card-image">
+                    <div class="card-badge">Природа</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Гора Фудзи</h3>
+                        <p class="card-description">Священный символ Японии высотой 3776 метров. Пять озёр у подножия горы и термальные источники онсэн создают идеальное место для релаксации.</p>
+                        <div class="card-tags">
+                            <span class="tag">Треккинг</span>
+                            <span class="tag">Онсэн</span>
+                            <span class="tag">Виды</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="destination-card">
-                <img src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800&h=600&fit=crop" alt="Осака" class="card-image">
-                <div class="card-badge">Гастрономия</div>
-                <div class="card-content">
-                    <h3 class="card-title">Осака</h3>
-                    <p class="card-description">Кулинарная столица Японии, известная как «кухня нации». Такояки, окономияки и оживлённый квартал Дотонбори с яркими неоновыми вывесками.</p>
-                    <div class="card-tags">
-                        <span class="tag">Еда</span>
-                        <span class="tag">Замки</span>
-                        <span class="tag">Развлечения</span>
+            <a href="osaka.html" class="destination-link">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1590559899731-a382839e5549?w=800&h=600&fit=crop" alt="Осака" class="card-image">
+                    <div class="card-badge">Гастрономия</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Осака</h3>
+                        <p class="card-description">Кулинарная столица Японии, известная как «кухня нации». Такояки, окономияки и оживлённый квартал Дотонбори с яркими неоновыми вывесками.</p>
+                        <div class="card-tags">
+                            <span class="tag">Еда</span>
+                            <span class="tag">Замки</span>
+                            <span class="tag">Развлечения</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="destination-card">
-                <img src="https://images.unsplash.com/photo-1624253321170-8595a43ad34c?w=800&h=600&fit=crop" alt="Хиросима" class="card-image">
-                <div class="card-badge">История</div>
-                <div class="card-content">
-                    <h3 class="card-title">Хиросима</h3>
-                    <p class="card-description">Город мира и памяти с Мемориальным парком. Недалеко находится священный остров Миядзима с плавучими воротами тории в море.</p>
-                    <div class="card-tags">
-                        <span class="tag">Мемориалы</span>
-                        <span class="tag">Миядзима</span>
-                        <span class="tag">Мир</span>
+            <a href="hiroshima.html" class="destination-link">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1624253321170-8595a43ad34c?w=800&h=600&fit=crop" alt="Хиросима" class="card-image">
+                    <div class="card-badge">История</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Хиросима</h3>
+                        <p class="card-description">Город мира и памяти с Мемориальным парком. Недалеко находится священный остров Миядзима с плавучими воротами тории в море.</p>
+                        <div class="card-tags">
+                            <span class="tag">Мемориалы</span>
+                            <span class="tag">Миядзима</span>
+                            <span class="tag">Мир</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="destination-card">
-                <img src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=800&h=600&fit=crop" alt="Нара" class="card-image">
-                <div class="card-badge">Животные</div>
-                <div class="card-content">
-                    <h3 class="card-title">Нара</h3>
-                    <p class="card-description">Древняя столица, где более 1000 священных оленей свободно гуляют по парку. Величественный храм Тодайдзи с гигантским бронзовым Буддой.</p>
-                    <div class="card-tags">
-                        <span class="tag">Олени</span>
-                        <span class="tag">Храмы</span>
-                        <span class="tag">Парки</span>
+            <a href="nara.html" class="destination-link">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=800&h=600&fit=crop" alt="Нара" class="card-image">
+                    <div class="card-badge">Животные</div>
+                    <div class="card-content">
+                        <h3 class="card-title">Нара</h3>
+                        <p class="card-description">Древняя столица, где более 1000 священных оленей свободно гуляют по парку. Величественный храм Тодайдзи с гигантским бронзовым Буддой.</p>
+                        <div class="card-tags">
+                            <span class="tag">Олени</span>
+                            <span class="tag">Храмы</span>
+                            <span class="tag">Парки</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 

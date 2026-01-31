@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Киото | Japan Journey 2026</title>
+    <style>
+        :root {
+            --color-bg: #20b2aa;
+            --color-text: #ffffff;
+            --color-text-light: rgba(255, 255, 255, 0.9);
+            --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --radius-md: 24px;
+            --radius-sm: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-main); background: var(--color-bg); color: var(--color-text); line-height: 1.7; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+        .back-link { display: inline-block; margin-bottom: 2rem; color: #fff; text-decoration: none; font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+        .city-hero { width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 2rem; box-shadow: var(--shadow-card); }
+        .city-badge { display: inline-block; background: #ff6b35; color: white; padding: 0.4rem 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #fff; }
+        .city-description { color: var(--color-text-light); margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .city-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { padding: 0.4rem 1rem; background: rgba(255,255,255,0.2); color: #fff; border-radius: var(--radius-sm); font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html#destinations" class="back-link">&larr; На главную</a>
+        <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&h=600&fit=crop" alt="Киото" class="city-hero">
+        <span class="city-badge">Традиции</span>
+        <h1>Киото</h1>
+        <p class="city-description">Древняя столица с более чем 2000 храмов и святынь. Золотой павильон, бамбуковая роща Арасияма и традиционный район гейш Гион.</p>
+        <div class="city-tags">
+            <span class="tag">Храмы</span>
+            <span class="tag">История</span>
+            <span class="tag">Гейши</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -16,6 +16,15 @@
         .sight h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff; }
         .sight .meta { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0.75rem; }
         .sight p { color: var(--color-text-light); font-size: 1rem; }
+        .sight-photo { margin-top: 1rem; }
+        .sight-photo-img { width: 100%; max-height: 240px; object-fit: cover; border-radius: 12px; display: none; margin-bottom: 0.5rem; }
+        .sight-photo-img.has-photo { display: block; }
+        .sight-actions { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+        .btn { display: inline-block; padding: 0.5rem 1rem; border-radius: 12px; font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; font-family: inherit; }
+        .btn-maps { background: rgba(255,255,255,0.25); color: #fff; }
+        .btn-maps:hover { background: rgba(255,255,255,0.35); }
+        .btn-photo { background: rgba(255,255,255,0.2); color: #fff; }
+        .btn-photo:hover { background: rgba(255,255,255,0.3); }
     </style>
 </head>
 <body>
@@ -23,41 +32,73 @@
         <a href="fuji.html" class="back-link">&larr; Назад к горе Фудзи</a>
         <h1>Что посмотреть у горы Фудзи</h1>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="fuji-chureito">
             <h3>Пагода Тюрэйто (Chureito)</h3>
             <p class="meta">Фудзиёсида, станция Shimoyoshida</p>
             <p>Классический вид: пятиярусная пагода на холме с Фудзи на заднем плане. Около 400 ступеней вверх. Лучшее время — рассвет, весна (сакура) и осень. Один из самых фотографируемых видов Японии.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Chureito+Pagoda+Fujiyoshida+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="fuji-kawaguchiko">
             <h3>Озеро Кавагутико</h3>
             <p class="meta">Кавагутико</p>
             <p>Самое доступное из пяти озёр. На северном берегу — лучшие виды на Фудзи. Прогулочные катера, велосипедные маршруты. Рядом музей Итику Кубота (кимоно) и канатная дорога Кати-кати.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Lake+Kawaguchiko+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="fuji-kachikachi">
             <h3>Канатная дорога Кати-кати (Kachi Kachi Ropeway)</h3>
             <p class="meta">Кавагутико</p>
             <p>Подъём на гору Тэндзё. Панорамный вид на озеро и Фудзи. Сверху — парк с сувенирами и кафе. Поездка занимает около 10 минут.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Kachi+Kachi+Ropeway+Kawaguchiko" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="fuji-yamanakako">
             <h3>Озеро Яманакако</h3>
             <p class="meta">Яманакако</p>
             <p>Самое большое из пяти озёр. Менее туристично, чем Кавагутико. Пляжи, водные развлечения летом. Спокойная атмосфера.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Lake+Yamanakako+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="fuji-hakone-torii">
             <h3>Хаконэ: озеро Аси и тории</h3>
             <p class="meta">Хаконэ</p>
             <p>Озеро Аси с «пиратским» корабликом и видом на Фудзи. Красные ворота тории храма Хаконэ-дзиндзя на воде — популярное место для фото.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Hakone+Shrine+Torii+Lake+Ashi" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="fuji-owakudani">
             <h3>Долина Овакудани</h3>
             <p class="meta">Хаконэ, канатная дорога</p>
             <p>Вулканическая долина с серными источниками. «Куро-тамаго» — яйца, сваренные в горячих источниках (говорят, продлевают жизнь). Пешеходная тропа и сувенирные лавки.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Owakudani+Hakone+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
     </div>
+    <script>
+(function(){
+    var prefix = 'sight-photo-';
+    document.querySelectorAll('.sight').forEach(function(sight){
+        var id = sight.getAttribute('data-sight-id');
+        if (!id) return;
+        var img = sight.querySelector('.sight-photo-img');
+        var input = sight.querySelector('input[type=file]');
+        var saved = localStorage.getItem(prefix + id);
+        if (saved && img) { img.src = saved; img.classList.add('has-photo'); }
+        if (input) input.addEventListener('change', function(){
+            var f = this.files[0];
+            if (!f || !f.type.match('image.*')) return;
+            var r = new FileReader();
+            r.onload = function(){ img.src = r.result; img.classList.add('has-photo'); localStorage.setItem(prefix + id, r.result); };
+            r.readAsDataURL(f);
+        });
+    });
+})();
+    </script>
 </body>
 </html>

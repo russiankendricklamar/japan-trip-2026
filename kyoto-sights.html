@@ -16,6 +16,15 @@
         .sight h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff; }
         .sight .meta { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0.75rem; }
         .sight p { color: var(--color-text-light); font-size: 1rem; }
+        .sight-photo { margin-top: 1rem; }
+        .sight-photo-img { width: 100%; max-height: 240px; object-fit: cover; border-radius: 12px; display: none; margin-bottom: 0.5rem; }
+        .sight-photo-img.has-photo { display: block; }
+        .sight-actions { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+        .btn { display: inline-block; padding: 0.5rem 1rem; border-radius: 12px; font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; font-family: inherit; }
+        .btn-maps { background: rgba(255,255,255,0.25); color: #fff; }
+        .btn-maps:hover { background: rgba(255,255,255,0.35); }
+        .btn-photo { background: rgba(255,255,255,0.2); color: #fff; }
+        .btn-photo:hover { background: rgba(255,255,255,0.3); }
     </style>
 </head>
 <body>
@@ -23,47 +32,81 @@
         <a href="kyoto.html" class="back-link">&larr; Назад к Киото</a>
         <h1>Что посмотреть в Киото</h1>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="kyoto-kinkakuji">
             <h3>Кинкакудзи (Золотой павильон)</h3>
             <p class="meta">Кита, платный вход</p>
             <p>Павильон XIV века, покрытый золотом, отражается в пруду Кёкоти. Один из символов Киото и Японии. Сад вокруг павильона — образец японского ландшафтного искусства. Приезжать лучше утром.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Kinkaku-ji+Kyoto+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="kyoto-fushimi-inari">
             <h3>Фусими Инари Тайся</h3>
             <p class="meta">Фусими, вход бесплатный</p>
             <p>Святилище с тысячами красных ворот тории, выстроенных тропой на гору. Классическое место для фото. Подъём занимает 2–3 часа. Рекомендуется приходить рано утром, чтобы избежать толп.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Fushimi+Inari+Taisha+Kyoto" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="kyoto-arashiyama">
             <h3>Бамбуковая роща Арасияма</h3>
             <p class="meta">Арасияма</p>
             <p>Аллея высокого бамбука у храма Тэнрюдзи. Умиротворённая атмосфера, особенно в ветреную погоду. Рядом храм Тэнрюдзи с садом, мост Тогэцукё и парк обезьян Иватаяма.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Arashiyama+Bamboo+Grove+Kyoto" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="kyoto-gion">
             <h3>Гион</h3>
             <p class="meta">Хигасияма</p>
             <p>Исторический район гейш и майко. Деревянные чайные домики, узкие улочки. Вечером можно увидеть гейш на пути к работе. Улица Ханнами-кодзи — одна из самых живописных.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Gion+Kyoto+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="kyoto-ginkakuji">
             <h3>Гинкакудзи (Серебряный павильон)</h3>
             <p class="meta">Сакуё</p>
             <p>Храм с изысканным садом песка и мха. Не такой многолюдный, как Кинкакудзи. Рядом Философская тропа — пешеходная дорожка вдоль канала, особенно красива весной и осенью.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Ginkaku-ji+Kyoto+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="kyoto-ryoanji">
             <h3>Рёандзи</h3>
             <p class="meta">Укё, платный вход</p>
             <p>Знаменитый дзен-сад из 15 камней на белом гравии. Место для медитации и размышлений. Один из самых известных «сухих» садов в мире.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Ryoan-ji+Kyoto+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="kyoto-kiyomizudera">
             <h3>Киёмидзу-дэра</h3>
             <p class="meta">Хигасияма</p>
             <p>Храм на склоне горы с деревянной сценой, выступающей над долиной. Панорамный вид на Киото. Улица Нидзэндзака ведёт к храму через сувенирные лавки.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera+Kyoto+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
     </div>
+    <script>
+(function(){
+    var prefix = 'sight-photo-';
+    document.querySelectorAll('.sight').forEach(function(sight){
+        var id = sight.getAttribute('data-sight-id');
+        if (!id) return;
+        var img = sight.querySelector('.sight-photo-img');
+        var input = sight.querySelector('input[type=file]');
+        var saved = localStorage.getItem(prefix + id);
+        if (saved && img) { img.src = saved; img.classList.add('has-photo'); }
+        if (input) input.addEventListener('change', function(){
+            var f = this.files[0];
+            if (!f || !f.type.match('image.*')) return;
+            var r = new FileReader();
+            r.onload = function(){ img.src = r.result; img.classList.add('has-photo'); localStorage.setItem(prefix + id, r.result); };
+            r.readAsDataURL(f);
+        });
+    });
+})();
+    </script>
 </body>
 </html>

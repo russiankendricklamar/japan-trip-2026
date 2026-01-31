@@ -16,6 +16,15 @@
         .sight h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff; }
         .sight .meta { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0.75rem; }
         .sight p { color: var(--color-text-light); font-size: 1rem; }
+        .sight-photo { margin-top: 1rem; }
+        .sight-photo-img { width: 100%; max-height: 240px; object-fit: cover; border-radius: var(--radius-sm); display: none; margin-bottom: 0.5rem; }
+        .sight-photo-img.has-photo { display: block; }
+        .sight-actions { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+        .btn { display: inline-block; padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; font-family: inherit; }
+        .btn-maps { background: rgba(255,255,255,0.25); color: #fff; }
+        .btn-maps:hover { background: rgba(255,255,255,0.35); }
+        .btn-photo { background: rgba(255,255,255,0.2); color: #fff; }
+        .btn-photo:hover { background: rgba(255,255,255,0.3); }
     </style>
 </head>
 <body>
@@ -23,47 +32,81 @@
         <a href="tokyo.html" class="back-link">&larr; Назад к Токио</a>
         <h1>Что посмотреть в Токио</h1>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="tokyo-imperial-palace">
             <h3>Императорский дворец и Восточный сад</h3>
             <p class="meta">Тиёда, вход в сад бесплатный</p>
             <p>Резиденция императора Японии окружена рвами и парками. Восточный сад (Кокё Хигаси Гёэн) открыт для посещения и даёт представление о традиционной японской ландшафтной архитектуре. Мост Нидзюбаси — классический вид для фото.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Imperial+Palace+Tokyo+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="tokyo-sensoji">
             <h3>Храм Сэнсо-дзи (Асакуса)</h3>
             <p class="meta">Асакуса, станция Asakusa</p>
             <p>Старейший храм Токио, основанный в 628 году. Ворота Каминаримон с огромным фонарём — символ района. Торговая улица Накамисэ-дори ведёт к главному залу; по пути — сувениры и уличная еда (тайяки, данго).</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Senso-ji+Temple+Asakusa+Tokyo" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="tokyo-skytree">
             <h3>Tokyo Skytree</h3>
             <p class="meta">Сумида, высота 634 м</p>
             <p>Самая высокая башня Японии. Две смотровые площадки (350 м и 450 м) открывают панораму города. Рекомендуется бронировать билеты заранее. Рядом аквариум и торговый комплекс.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Tokyo+Skytree+Sumida" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="tokyo-shibuya">
             <h3>Сибуя и перекрёсток</h3>
             <p class="meta">Сибуя</p>
             <p>Легендарный перекрёсток Сибуя — один из самых оживлённых в мире. Статуя Хатико, модные магазины, кафе и ночная жизнь. Идеально для вечерней прогулки.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Crossing+Tokyo" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="tokyo-akihabara">
             <h3>Акихабара</h3>
             <p class="meta">Акихабара</p>
             <p>Район электроники, манги, аниме и видеоигр. МногоЭтажные магазины техники, комиксы, фигурки. Мейд-кафе и аркадные залы. Уникальная атмосфера «отаку»-культуры.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Akihabara+Tokyo" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="tokyo-shinjuku-gyoen">
             <h3>Синдзюку Гёэн</h3>
             <p class="meta">Синдзюку, платный вход</p>
             <p>Один из красивейших парков Токио: японский, английский и французский сады. Пик цветения сакуры и осенних клёнов. Спокойное место в центре небоскрёбов.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Shinjuku+Gyoen+National+Garden+Tokyo" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="tokyo-tsukiji">
             <h3>Рынок Цукидзи (внешний)</h3>
             <p class="meta">Цукидзи</p>
             <p>Внутренний оптовый рынок перенесён в Тоёсу, но внешний рынок Цукидзи Дзёгай остаётся: утренние суши, морепродукты, кухонная утварь и сувениры. Приходить лучше утром.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Tsukiji+Outer+Market+Tokyo" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
     </div>
+    <script>
+(function(){
+    var prefix = 'sight-photo-';
+    document.querySelectorAll('.sight').forEach(function(sight){
+        var id = sight.getAttribute('data-sight-id');
+        if (!id) return;
+        var img = sight.querySelector('.sight-photo-img');
+        var input = sight.querySelector('input[type=file]');
+        var saved = localStorage.getItem(prefix + id);
+        if (saved && img) { img.src = saved; img.classList.add('has-photo'); }
+        if (input) input.addEventListener('change', function(){
+            var f = this.files[0];
+            if (!f || !f.type.match('image.*')) return;
+            var r = new FileReader();
+            r.onload = function(){ img.src = r.result; img.classList.add('has-photo'); localStorage.setItem(prefix + id, r.result); };
+            r.readAsDataURL(f);
+        });
+    });
+})();
+    </script>
 </body>
 </html>

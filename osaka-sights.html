@@ -16,6 +16,15 @@
         .sight h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff; }
         .sight .meta { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0.75rem; }
         .sight p { color: var(--color-text-light); font-size: 1rem; }
+        .sight-photo { margin-top: 1rem; }
+        .sight-photo-img { width: 100%; max-height: 240px; object-fit: cover; border-radius: 12px; display: none; margin-bottom: 0.5rem; }
+        .sight-photo-img.has-photo { display: block; }
+        .sight-actions { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+        .btn { display: inline-block; padding: 0.5rem 1rem; border-radius: 12px; font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; font-family: inherit; }
+        .btn-maps { background: rgba(255,255,255,0.25); color: #fff; }
+        .btn-maps:hover { background: rgba(255,255,255,0.35); }
+        .btn-photo { background: rgba(255,255,255,0.2); color: #fff; }
+        .btn-photo:hover { background: rgba(255,255,255,0.3); }
     </style>
 </head>
 <body>
@@ -23,47 +32,81 @@
         <a href="osaka.html" class="back-link">&larr; Назад к Осаке</a>
         <h1>Что посмотреть в Осаке</h1>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="osaka-castle">
             <h3>Замок Осаки</h3>
             <p class="meta">Тюо, платный вход в главную башню</p>
             <p>Символ Осаки, восстановленная крепость XVI века. Главная башня — музей с панорамным видом. Парк вокруг замка — популярное место для ханами (любования сакурой) весной.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="osaka-dotonbori">
             <h3>Дотонбори</h3>
             <p class="meta">Нанба</p>
             <p>Канал с неоновыми вывесками, гигантскими рекламными фигурами (краб, гулька и др.) и уличной едой. Сердце ночной Осаки. Такояки, окономияки, рамен — всё в шаговой доступности. Лучше вечером.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Dotonbori+Osaka+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="osaka-umedasky">
             <h3>Умэда Sky Building</h3>
             <p class="meta">Кита, платный вход</p>
             <p>Два небоскрёба, соединённые смотровой площадкой на высоте 170 м. Панорама города и залива. «Саду небес» на крыше — сад с видом. Рекомендуется на закате.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Umeda+Sky+Building+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="osaka-shinsaibashi">
             <h3>Синсайбаси</h3>
             <p class="meta">Синсайбаси</p>
             <p>Торговая улица под крышей, соединяющая Нанба и Дотонбори. Магазины, кафе, уличная еда. Атмосфера шумная и весёлая. Удобно совмещать с Дотонбори.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Shinsaibashi+Osaka+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="osaka-kuromon">
             <h3>Курумон Итиба (рынок)</h3>
             <p class="meta">Нанба</p>
             <p>Крытый рынок с морепродуктами, фруктами и готовой едой. Кушикацу (жареные на шпажках) — местный специалитет. Завтрак или обед в атмосфере рынка.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Kuromon+Market+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="osaka-amerikamura">
             <h3>Америкамура (Амэмура)</h3>
             <p class="meta">Синсайбаси</p>
             <p>Район молодёжной моды и уличной культуры. Магазины винтажной одежды, граффити, кафе. «Маленькая Америка» в центре Осаки. Ночная жизнь.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Amerikamura+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
 
-        <div class="sight">
+        <div class="sight" data-sight-id="osaka-shitennoji">
             <h3>Храм Ситэнно-дзи</h3>
             <p class="meta">Тэннодзи</p>
             <p>Один из старейших храмов Японии (VI век). Пятиярусная пагода и сад. Рядом парк и зоопарк Тэннодзи. Спокойная альтернатива шумному центру.</p>
+            <div class="sight-photo"><img class="sight-photo-img" alt=""><label class="btn btn-photo">Добавить фото<input type="file" accept="image/*" hidden></label></div>
+            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Shitenno-ji+Temple+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
     </div>
+    <script>
+(function(){
+    var prefix = 'sight-photo-';
+    document.querySelectorAll('.sight').forEach(function(sight){
+        var id = sight.getAttribute('data-sight-id');
+        if (!id) return;
+        var img = sight.querySelector('.sight-photo-img');
+        var input = sight.querySelector('input[type=file]');
+        var saved = localStorage.getItem(prefix + id);
+        if (saved && img) { img.src = saved; img.classList.add('has-photo'); }
+        if (input) input.addEventListener('change', function(){
+            var f = this.files[0];
+            if (!f || !f.type.match('image.*')) return;
+            var r = new FileReader();
+            r.onload = function(){ img.src = r.result; img.classList.add('has-photo'); localStorage.setItem(prefix + id, r.result); };
+            r.readAsDataURL(f);
+        });
+    });
+})();
+    </script>
 </body>
 </html>

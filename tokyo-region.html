@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Timeline: Western Japan | Japan 2026</title>
+    <title>Group Timeline: Tokyo Region | Japan 2026</title>
     <style>
         :root {
             --bg-color: #0f172a;
             --card-bg: rgba(30, 41, 59, 0.7);
-            --accent-color: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.5);
-            --secondary-accent: #f97316;
+            --accent-color: #667eea;
+            --accent-glow: rgba(102, 126, 234, 0.5);
+            --secondary-accent: #764ba2;
             --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
             --line-color: #334155;
@@ -18,7 +18,7 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
             color: var(--text-primary);
             font-family: var(--font-main);
             margin: 0;
@@ -36,7 +36,7 @@
             pointer-events: none;
             z-index: 0;
             opacity: 0.3;
-            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+            background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.2) 0%, transparent 100%);
         }
 
         .flight-path {
@@ -56,7 +56,7 @@
         .plane-icon {
             position: absolute;
             font-size: 2rem;
-            color: var(--accent-color);
+            color: var(--text-primary);
             offset-path: path('M -100 50 Q 400 300 1200 100');
             animation: flight 8s linear infinite;
             filter: drop-shadow(0 0 10px var(--accent-glow));
@@ -76,13 +76,13 @@
             z-index: 10;
             padding: 2.5rem 2rem;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(26, 14, 46, 0.9), transparent);
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), transparent);
         }
 
         h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #fff, var(--accent-color));
+            background: linear-gradient(90deg, #fff, var(--text-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -90,19 +90,20 @@
         .mission-status {
             display: inline-block;
             padding: 0.5rem 1rem;
-            border: 1px solid var(--accent-color);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 20px;
-            color: var(--accent-color);
+            color: var(--text-primary);
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .subtitle {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             margin-top: 0.8rem;
             font-size: 1.1rem;
+            opacity: 0.9;
         }
 
         /* --- Vertical Timeline --- */
@@ -121,9 +122,9 @@
             left: 50%;
             width: 3px;
             height: 100%;
-            background: linear-gradient(180deg, var(--accent-color), var(--secondary-accent));
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
             transform: translateX(-50%);
-            box-shadow: 0 0 15px var(--accent-glow);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
 
         .timeline-node {
@@ -149,26 +150,28 @@
             transform: translateX(-50%);
             width: 24px;
             height: 24px;
-            background: var(--bg-color);
-            border: 4px solid var(--accent-color);
+            background: var(--secondary-accent);
+            border: 4px solid rgba(255, 255, 255, 0.9);
             border-radius: 50%;
             z-index: 5;
-            box-shadow: 0 0 20px var(--accent-glow), inset 0 0 10px var(--accent-glow);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.3);
             animation: pulse 2s ease-in-out infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 20px var(--accent-glow), inset 0 0 10px var(--accent-glow); }
-            50% { box-shadow: 0 0 30px var(--accent-glow), inset 0 0 15px var(--accent-glow); }
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.5); }
         }
 
         .node-point.start { 
             border-color: #4ade80; 
+            background: #22c55e;
             box-shadow: 0 0 20px rgba(74, 222, 128, 0.6), inset 0 0 10px rgba(74, 222, 128, 0.4);
         }
         
         .node-point.end { 
             border-color: #f43f5e;
+            background: #e11d48;
             box-shadow: 0 0 20px rgba(244, 63, 94, 0.6), inset 0 0 10px rgba(244, 63, 94, 0.4);
         }
 
@@ -178,7 +181,7 @@
             backdrop-filter: blur(15px);
             padding: 2rem;
             border-radius: 20px;
-            border: 1px solid rgba(102, 126, 234, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
@@ -186,8 +189,8 @@
 
         .node-content:hover {
             transform: scale(1.03);
-            border-color: var(--accent-color);
-            box-shadow: 0 15px 50px var(--accent-glow);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
         }
 
         .timeline-node:nth-child(odd) .node-content {
@@ -222,14 +225,15 @@
 
         .time-badge {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent-color), var(--secondary-accent));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
             color: #fff;
             padding: 4px 12px;
             border-radius: 6px;
             font-weight: bold;
             font-size: 0.8rem;
             margin-bottom: 0.8rem;
-            box-shadow: 0 4px 15px var(--accent-glow);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .location-title {
@@ -237,13 +241,14 @@
             font-weight: 700;
             margin: 0.8rem 0;
             color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
         .location-desc {
             font-size: 1rem;
-            color: var(--text-secondary);
+            color: var(--text-primary);
             line-height: 1.7;
+            opacity: 0.9;
         }
 
         /* --- Navigation --- */
@@ -258,16 +263,22 @@
         }
 
         .btn-back {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.15);
             backdrop-filter: blur(5px);
             color: white;
             text-decoration: none;
             padding: 10px 20px;
             border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
             transition: all 0.3s;
+            font-weight: 600;
         }
-        .btn-back:hover { background: var(--accent-color); color: var(--bg-color); }
+        .btn-back:hover { 
+            background: rgba(255, 255, 255, 0.3); 
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+        }
 
         /* --- Mobile --- */
         @media (max-width: 768px) {
@@ -301,125 +312,136 @@
 
     <!-- Header -->
     <header>
-        <div class="mission-status">Phase 3: Final</div>
-        <h1>Western Japan Expedition</h1>
-        <p style="color: var(--text-secondary);">Оперативная группа • Таймлайн: День 8-10</p>
+        <div class="mission-status">Phase 1: Initial</div>
+        <h1>Tokyo Region Mission</h1>
+        <p class="subtitle">Оперативная группа • Таймлайн: День 1-5</p>
     </header>
 
     <!-- Timeline -->
     <div class="timeline-container">
         
-        <!-- Node 1: Arrival Hiroshima -->
+        <!-- Node 1: Arrival -->
         <div class="timeline-node">
             <div class="node-point start"></div>
             <div class="node-content">
-                <span class="time-badge">День 8 • 10:00</span>
-                <h3 class="location-title">Прибытие: Хиросима</h3>
+                <span class="time-badge">День 1 • 06:00</span>
+                <h3 class="location-title">🛬 Приземление: Токио NRT/HND</h3>
                 <p class="location-desc">
-                    Синкансэн Токайдо-Санъё из Осаки (1.5 часа). Размещение в отеле.
-                    Начало исторической миссии: Мемориальный парк мира, Атомный купол (ЮНЕСКО), музей.
-                    Глубокое погружение в историю 6 августа 1945 года.
+                    Прилёт в аэропорт Нарита (NRT) или Ханэда (HND). Активация JR Pass (обязательно в аэропорту!).
+                    Размещение в отеле в районе Синдзюку/Сибуя. Первый выход: квартал Харадзюку, улица Такэсита-дори.
+                    Вечером — пересечение Сибуя, центр Хатико.
                 </p>
             </div>
         </div>
 
-        <!-- Node 2: Peace Memorial -->
+        <!-- Node 2: Tokyo City -->
         <div class="timeline-node">
             <div class="node-point"></div>
             <div class="node-content">
-                <span class="time-badge">День 8 • 14:00</span>
-                <h3 class="location-title">Памятник 1000 журавликов</h3>
+                <span class="time-badge">День 2 • 09:00</span>
+                <h3 class="location-title">🏙️ Токио: Императорский дворец & Гинза</h3>
                 <p class="location-desc">
-                    История Садако Сасаки и детей Хиросимы. Возложение бумажных журавликов.
-                    Замок Хиросимы — восстановленная крепость XVI века. Сад Сюккэйэн для медитации.
+                    Императорский дворец и Восточный сад (вход бесплатный). Мост Нидзюбаси — классическое фото.
+                    Гинза — элитный шопинг, универмаги Mitsukoshi и Wako. Обед: суши в Tsukiji Outer Market.
+                    Вечер: смотровая площадка Tokyo Skytree (634м, билет ¥2100).
                 </p>
             </div>
         </div>
 
-        <!-- Node 3: Okonomiyaki -->
+        <!-- Node 3: Asakusa -->
         <div class="timeline-node">
             <div class="node-point"></div>
             <div class="node-content">
-                <span class="time-badge">День 8 • 19:00</span>
-                <h3 class="location-title">Okonomimura — гастрономия</h3>
+                <span class="time-badge">День 2 • 16:00</span>
+                <h3 class="location-title">⛩️ Асакуса: Храм Сэнсо-дзи</h3>
                 <p class="location-desc">
-                    Дегустация хиросима-стиль окономияки (со слоями лапши) в легендарной «деревне окономияки».
-                    4 этажа, 25+ киосков. Свежайшие устрицы — деликатес региона.
-                    Вечерняя прогулка по торговой улице Хондори.
+                    Старейший храм Токио (основан 628 год). Ворота Каминаримон («Громовые врата») с огромным фонарём.
+                    Торговая улица Накамисэ-дори — традиционные сувениры, уличная еда (тайяки, данго).
+                    Пятиярусная пагода. Вечерняя подсветка храма после заката.
                 </p>
             </div>
         </div>
 
-        <!-- Node 4: Ferry to Miyajima -->
+        <!-- Node 4: Mt. Fuji Day Trip -->
         <div class="timeline-node">
             <div class="node-point"></div>
             <div class="node-content">
-                <span class="time-badge">День 9 • 08:00</span>
-                <h3 class="location-title">Переправа: Остров Миядзима</h3>
+                <span class="time-badge">День 3 • 07:00</span>
+                <h3 class="location-title">🗻 Однодневный выезд: Гора Фудзи</h3>
                 <p class="location-desc">
-                    JR Sanyo Line до Miyajimaguchi (30 мин) + JR Ferry (10 мин, покрывается JR Pass).
-                    Прибытие на священный остров Ицукусима. Ранний доступ — минимум туристов.
-                    Встреча со священными оленями у порта.
+                    Раннее утро. JR Chuo Line → станция Otsuki → Fujikyu Railway до станции Kawaguchiko (2.5 часа).
+                    Озеро Кавагутико — лучший вид на Фудзи с северного берега.
+                    Опции: Музей Итику Кубота (кимоно), панорамная канатная дорога Kachi Kachi Ropeway.
+                    Pagoda Chureito (400 ступеней) — культовое фото с Фудзи. Возврат вечером в Токио.
                 </p>
             </div>
         </div>
 
-        <!-- Node 5: Floating Torii -->
+        <!-- Node 5: Hakone Hot Springs -->
         <div class="timeline-node">
             <div class="node-point"></div>
             <div class="node-content">
-                <span class="time-badge">День 9 • 09:30</span>
-                <h3 class="location-title">Плавучие ворота Тории</h3>
+                <span class="time-badge">День 4 • 08:00</span>
+                <h3 class="location-title">♨️ Хаконэ: Онсэн & Круиз по озеру Аси</h3>
                 <p class="location-desc">
-                    Легендарные 16-метровые красные ворота в воде — икона Японии (объект ЮНЕСКО).
-                    Храм Ицукусима на сваях над морем. Пятиярусная пагода.
-                    <strong>Прилив:</strong> Ворота «плавают» — магия фотографии.
-                    <strong>Отлив:</strong> Можно дойти пешком до основания.
+                    JR Tokaido Line → Odawara (45 мин, покрывается JR Pass) → Hakone Tozan Railway.
+                    Озеро Аси — пиратский кораблик с видом на Фудзи. Красные ворота тории Хаконэ-дзиндзя на воде.
+                    Канатная дорога Hakone Ropeway через долину вулкана Овакудани (серные источники, чёрные яйца ¥500 за 5шт).
+                    Традиционный рёкан с онсэн вечером (ночёвка опционально) или возврат в Токио.
                 </p>
             </div>
         </div>
 
-        <!-- Node 6: Mt. Misen -->
+        <!-- Node 6: Akihabara & Shinjuku -->
         <div class="timeline-node">
             <div class="node-point"></div>
             <div class="node-content">
-                <span class="time-badge">День 9 • 13:00</span>
-                <h3 class="location-title">Восхождение: Гора Мисэн (530м)</h3>
+                <span class="time-badge">День 5 • 12:00</span>
+                <h3 class="location-title">🎮 Акихабара & Синдзюку</h3>
                 <p class="location-desc">
-                    Опции: Канатная дорога (¥1840 туда-обратно) или треккинг (2-3 часа).
-                    Панорамный вид на Внутреннее Японское море с вершины.
-                    Храм Дайган-дзи у подножия. Парк Момидзидани (клёны — осенью золотые!).
+                    Акихабара — электроника, манга, аниме, гейминг (5+ этажные магазины типа Yodobashi Camera).
+                    Меид-кафе (опционально, на любителя). Обед: рамен в квартале Синдзюку Omoide Yokocho (переулок воспоминаний).
+                    Вечер: парк Синдзюку Гёэн (¥500 вход) или бесплатная смотровая площадка Tokyo Metropolitan Government Building (45 этаж).
+                    Kabukicho — неоновые огни квартала развлечений (робот-ресторан, караоке).
                 </p>
             </div>
         </div>
 
-        <!-- Node 7: Sunset -->
-        <div class="timeline-node">
-            <div class="node-point"></div>
-            <div class="node-content">
-                <span class="time-badge">День 9 • 18:00</span>
-                <h3 class="location-title">Golden Hour: Закат у тории</h3>
-                <p class="location-desc">
-                    Возвращение к воротам для магического золотого часа.
-                    Ворота подсвечиваются после заката. Момидзи манджу (пирожные в форме кленового листа) с видом на море.
-                    Ночёвка на острове в традиционном рёкан (опционально) или возврат в Хиросиму.
-                </p>
-            </div>
-        </div>
-
-        <!-- Node 8: Departure -->
+        <!-- Node 7: Departure to Kansai -->
         <div class="timeline-node">
             <div class="node-point end"></div>
             <div class="node-content">
-                <span class="time-badge">День 10 • 14:00</span>
-                <h3 class="location-title">Завершение: Shinkansen Exit</h3>
+                <span class="time-badge">День 5 • 18:00</span>
+                <h3 class="location-title">🚄 Отправление: Shinkansen → Kansai</h3>
                 <p class="location-desc">
-                    Финальная проверка багажа. Станция Хиросима.
-                    Посадка на синкансэн Nozomi/Hikari. 
-                    Направление: Токио (4 часа) или Осака (1.5 часа) для вылета.
-                    <strong>Миссия завершена. Конец Phase 3.</strong>
+                    Станция Токио. Посадка на синкансэн Tokaido Shinkansen (Nozomi/Hikari).
+                    Направление: Киото/Осака (2.5 часа, покрывается JR Pass).
+                    Упаковка багажа, проверка билетов, покупка ekiben (станционный бенто) на дорогу.
+                    <strong>Конец Phase 1. Переход к Phase 2: Kansai Region.</strong>
                 </p>
             </div>
         </div>
 
     </div>
+
+    <div class="nav-controls">
+        <a href="index.html" class="btn-back">← Dashboard</a>
+        <a href="kansai-region.html" class="btn-back">Next Phase →</a>
+    </div>
+
+    <script>
+        // Scroll animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.timeline-node').forEach((node) => {
+            observer.observe(node);
+        });
+    </script>
+</body>
+</html>

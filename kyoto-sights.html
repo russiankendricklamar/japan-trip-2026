@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Киото — что посмотреть | Japan Journey 2026</title>
     <style>
-        :root { --color-bg: #20b2aa; --color-text: #fff; --color-text-light: rgba(255,255,255,0.9); --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; --radius-md: 24px; }
+        :root { --color-bg: #c026d3; --color-text: #fff; --color-text-light: rgba(255,255,255,0.9); --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; --radius-md: 24px; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-main); background: var(--color-bg); color: var(--color-text); line-height: 1.7; }
         .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
@@ -22,6 +22,14 @@
         .btn { display: inline-block; padding: 0.5rem 1rem; border-radius: 12px; font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; font-family: inherit; }
         .btn-maps { background: rgba(255,255,255,0.25); color: #fff; }
         .btn-maps:hover { background: rgba(255,255,255,0.35); }
+        .carousel { position: relative; overflow: hidden; margin-bottom: 1rem; border-radius: var(--radius-md); }
+        .carousel-track { display: flex; transition: transform 0.35s ease-out; }
+        .carousel-slide { min-width: 100%; flex-shrink: 0; padding: 0 0.25rem; }
+        .carousel .sight { margin-bottom: 0; }
+        .carousel-nav { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+        .carousel-prev, .carousel-next { padding: 0.6rem 1.2rem; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; background: rgba(255,255,255,0.25); color: #fff; font-family: inherit; }
+        .carousel-prev:hover, .carousel-next:hover { background: rgba(255,255,255,0.4); }
+        .carousel-prev:disabled, .carousel-next:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
 </head>
 <body>
@@ -29,6 +37,9 @@
         <a href="kyoto.html" class="back-link">&larr; Назад к Киото</a>
         <h1>Что посмотреть в Киото</h1>
 
+        <div class="carousel">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="kyoto-kinkakuji">
             <h3>Кинкакудзи (Золотой павильон)</h3>
             <p class="meta">Кита, платный вход</p>
@@ -36,7 +47,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/kyoto-kinkakuji.jpg" alt="Кинкакудзи" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Kinkaku-ji+Kyoto+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="kyoto-fushimi-inari">
             <h3>Фусими Инари Тайся</h3>
             <p class="meta">Фусими, вход бесплатный</p>
@@ -44,7 +56,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/kyoto-fushimi-inari.jpg" alt="Фусими Инари" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Fushimi+Inari+Taisha+Kyoto" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="kyoto-arashiyama">
             <h3>Бамбуковая роща Арасияма</h3>
             <p class="meta">Арасияма</p>
@@ -52,7 +65,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/kyoto-arashiyama.jpg" alt="Арасияма" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Arashiyama+Bamboo+Grove+Kyoto" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="kyoto-gion">
             <h3>Гион</h3>
             <p class="meta">Хигасияма</p>
@@ -60,7 +74,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/kyoto-gion.jpg" alt="Гион" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Gion+Kyoto+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="kyoto-ginkakuji">
             <h3>Гинкакудзи (Серебряный павильон)</h3>
             <p class="meta">Сакуё</p>
@@ -68,7 +83,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/kyoto-ginkakuji.jpg" alt="Гинкакудзи" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Ginkaku-ji+Kyoto+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="kyoto-ryoanji">
             <h3>Рёандзи</h3>
             <p class="meta">Укё, платный вход</p>
@@ -76,7 +92,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/kyoto-ryoanji.jpg" alt="Рёандзи" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Ryoan-ji+Kyoto+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="kyoto-kiyomizudera">
             <h3>Киёмидзу-дэра</h3>
             <p class="meta">Хигасияма</p>
@@ -84,6 +101,35 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/kyoto-kiyomizudera.jpg" alt="Киёмидзу-дэра" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera+Kyoto+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button type="button" class="carousel-prev" id="carouselPrev" aria-label="Назад">&larr; Назад</button>
+            <button type="button" class="carousel-next" id="carouselNext" aria-label="Вперёд">Вперёд &rarr;</button>
+        </div>
+        <p class="carousel-counter" id="carouselCounter" style="text-align:center;margin-top:0.5rem;color:rgba(255,255,255,0.8);font-size:0.9rem;"></p>
     </div>
+    <script>
+        (function() {
+            var track = document.getElementById('carouselTrack');
+            var prev = document.getElementById('carouselPrev');
+            var next = document.getElementById('carouselNext');
+            var counter = document.getElementById('carouselCounter');
+            var slides = track ? track.querySelectorAll('.carousel-slide') : [];
+            var total = slides.length;
+            var index = 0;
+            function go(i) {
+                index = Math.max(0, Math.min(i, total - 1));
+                if (track) track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                if (prev) prev.disabled = index === 0;
+                if (next) next.disabled = index === total - 1;
+                if (counter) counter.textContent = (index + 1) + ' / ' + total;
+            }
+            if (prev) prev.addEventListener('click', function() { go(index - 1); });
+            if (next) next.addEventListener('click', function() { go(index + 1); });
+            go(0);
+        })();
+    </script>
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Нара — что посмотреть | Japan Journey 2026</title>
     <style>
-        :root { --color-bg: #20b2aa; --color-text: #fff; --color-text-light: rgba(255,255,255,0.9); --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; --radius-md: 24px; }
+        :root { --color-bg: #ca8a04; --color-text: #fff; --color-text-light: rgba(255,255,255,0.9); --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; --radius-md: 24px; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-main); background: var(--color-bg); color: var(--color-text); line-height: 1.7; }
         .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
@@ -22,6 +22,14 @@
         .btn { display: inline-block; padding: 0.5rem 1rem; border-radius: 12px; font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; font-family: inherit; }
         .btn-maps { background: rgba(255,255,255,0.25); color: #fff; }
         .btn-maps:hover { background: rgba(255,255,255,0.35); }
+        .carousel { position: relative; overflow: hidden; margin-bottom: 1rem; border-radius: var(--radius-md); }
+        .carousel-track { display: flex; transition: transform 0.35s ease-out; }
+        .carousel-slide { min-width: 100%; flex-shrink: 0; padding: 0 0.25rem; }
+        .carousel .sight { margin-bottom: 0; }
+        .carousel-nav { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+        .carousel-prev, .carousel-next { padding: 0.6rem 1.2rem; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; background: rgba(255,255,255,0.25); color: #fff; font-family: inherit; }
+        .carousel-prev:hover, .carousel-next:hover { background: rgba(255,255,255,0.4); }
+        .carousel-prev:disabled, .carousel-next:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
 </head>
 <body>
@@ -29,6 +37,9 @@
         <a href="nara.html" class="back-link">&larr; Назад к Наре</a>
         <h1>Что посмотреть в Наре</h1>
 
+        <div class="carousel">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="nara-todaiji">
             <h3>Тодайдзи (Великий Восточный храм)</h3>
             <p class="meta">Парк Нара, платный вход</p>
@@ -36,7 +47,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/nara-todaiji.jpg" alt="Тодайдзи" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Todai-ji+Temple+Nara+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="nara-park">
             <h3>Парк Нара</h3>
             <p class="meta">Центр Нары, вход бесплатный</p>
@@ -44,7 +56,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/nara-park.jpg" alt="Парк Нара" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Nara+Park+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="nara-kasuga">
             <h3>Касуга Тайся</h3>
             <p class="meta">Парк Нара, вход в святилище бесплатный</p>
@@ -52,7 +65,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/nara-kasuga.jpg" alt="Касуга Тайся" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Kasuga+Taisha+Nara+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="nara-naramachi">
             <h3>Нарамачи</h3>
             <p class="meta">Район у парка</p>
@@ -60,7 +74,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/nara-naramachi.jpg" alt="Нарамачи" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Naramachi+Nara+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="nara-kofukuji">
             <h3>Кофуку-дзи</h3>
             <p class="meta">Парк Нара</p>
@@ -68,7 +83,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/nara-kofukuji.jpg" alt="Кофуку-дзи" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Kofuku-ji+Nara+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="nara-horyuji">
             <h3>Хорю-дзи</h3>
             <p class="meta">Икаруга, около 12 км от центра Нары</p>
@@ -76,7 +92,8 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/nara-horyuji.jpg" alt="Хорю-дзи" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Horyu-ji+Temple+Ikaruga+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
-
+                </div>
+                <div class="carousel-slide">
         <div class="sight" data-sight-id="nara-isuien">
             <h3>Сады Исуй-эн</h3>
             <p class="meta">Парк Нара, платный вход</p>
@@ -84,6 +101,35 @@
             <div class="sight-photo"><img class="sight-photo-img" src="images/nara-isuien.jpg" alt="Сады Исуй-эн" onerror="this.src='images/placeholder.png'"></div>
             <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Isui-en+Garden+Nara+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
         </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button type="button" class="carousel-prev" id="carouselPrev" aria-label="Назад">&larr; Назад</button>
+            <button type="button" class="carousel-next" id="carouselNext" aria-label="Вперёд">Вперёд &rarr;</button>
+        </div>
+        <p class="carousel-counter" id="carouselCounter" style="text-align:center;margin-top:0.5rem;color:rgba(255,255,255,0.8);font-size:0.9rem;"></p>
     </div>
+    <script>
+        (function() {
+            var track = document.getElementById('carouselTrack');
+            var prev = document.getElementById('carouselPrev');
+            var next = document.getElementById('carouselNext');
+            var counter = document.getElementById('carouselCounter');
+            var slides = track ? track.querySelectorAll('.carousel-slide') : [];
+            var total = slides.length;
+            var index = 0;
+            function go(i) {
+                index = Math.max(0, Math.min(i, total - 1));
+                if (track) track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                if (prev) prev.disabled = index === 0;
+                if (next) next.disabled = index === total - 1;
+                if (counter) counter.textContent = (index + 1) + ' / ' + total;
+            }
+            if (prev) prev.addEventListener('click', function() { go(index - 1); });
+            if (next) next.addEventListener('click', function() { go(index + 1); });
+            go(0);
+        })();
+    </script>
 </body>
 </html>

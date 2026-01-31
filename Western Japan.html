@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Западная Япония | Japan Journey 2026</title>
+    <style>
+        :root {
+            --color-primary: #4facfe;
+            --color-primary-light: #7dc5fe;
+            --color-primary-dark: #2b8fd9;
+            --color-accent: #00f2fe;
+            --color-bg: #f8f9fa;
+            --color-surface: #ffffff;
+            --color-text: #1a1a2e;
+            --color-text-light: #505565;
+            --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.08);
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --radius-lg: 32px;
+            --radius-md: 24px;
+            --radius-sm: 16px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-bg: #0f0f1e;
+                --color-surface: #1a1a2e;
+                --color-text: #e0e0e0;
+                --color-text-light: #a8a8b8;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: var(--color-bg);
+            color: var(--color-text);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-text-light);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .destination-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--color-text);
+        }
+
+        .card-description {
+            color: var(--color-text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlights {
+            margin-top: 1.5rem;
+        }
+
+        .highlights h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--color-primary);
+        }
+
+        .highlights ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlights li {
+            padding: 0.5rem 0;
+            color: var(--color-text-light);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            margin: 2rem auto;
+            display: block;
+            max-width: 300px;
+        }
+
+        .back-button:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-3px);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 80px;
+            }
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-brand">日本 Journey</a>
+        <a href="index.html">← Назад к главной</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🕊️ Западная Япония</h1>
+            <p class="hero-subtitle">Город мира Хиросима и священный остров Миядзима с плавучими воротами</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">Группа 3: Память и красота</h2>
+        <p class="section-subtitle">Глубокая история и потрясающие природные виды региона Тюгоку</p>
+
+        <div class="destinations-grid">
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1624253321170-8595a43ad34c?w=800&h=600&fit=crop" alt="Хиросима">
+                <div class="card-content">
+                    <h3 class="card-title">Хиросима — город мира</h3>
+                    <p class="card-description">Город, восставший из пепла после атомной бомбардировки 6 августа 1945 года. Сегодня это современный мегаполис, символ мира и надежды. Мемориальный парк мира напоминает о трагедии и призывает к миру во всём мире.</p>
+                    
+                    <div class="highlights">
+                        <h4>🎯 Главные достопримечательности:</h4>
+                        <ul>
+                            <li><strong>Мемориальный парк мира</strong> — место памяти и размышлений</li>
+                            <li><strong>Атомный купол (Гэмбаку Дому)</strong> — объект ЮНЕСКО, сохранённые руины</li>
+                            <li><strong>Мемориальный музей мира</strong> — трогательная экспозиция о бомбардировке</li>
+                            <li><strong>Памятник детям</strong> — история Садако Сасаки и 1000 журавликов</li>
+                            <li><strong>Замок Хиросимы</strong> — восстановленная крепость XVI века</strong>
+                            <li><strong>Сад Сюккэйэн</strong> — традиционный японский сад</li>
+                            <li><strong>Хондори</strong> — главная торговая улица под крышей</li>
+                            <li><strong>Окономияки деревня</strong> — дегустация местной версии окономияки</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlights">
+                        <h4>🍜 Местная кухня:</h4>
+                        <ul>
+                            <li><strong>Хиросима-стиль окономияки</strong> — со слоями лапши</li>
+                            <li><strong>Устрицы</strong> — Хиросима славится свежайшими устрицами</li>
+                            <li><strong>Анаго-меси</strong> — рис с угрём</li>
+                            <li><strong>Момидзи манджу</strong> — пирожные в форме кленового листа</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlights">
+                        <h4>⏰ Рекомендуемое время: 1-2 дня</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1590559808990-8084dc0bb1b9?w=800&h=600&fit=crop" alt="Миядзима">
+                <div class="card-content">
+                    <h3 class="card-title">Миядзима — священный остров</h3>
+                    <p class="card-description">Официально Ицукусима — один из трёх самых живописных видов Японии. Знаменит гигантскими красными воротами тории, стоящими в море. Считается священным островом синто. Объект ЮНЕСКО с дикими оленями и древними храмами.</p>
+                    
+                    <div class="highlights">
+                        <h4>🎯 Главные достопримечательности:</h4>
+                        <ul>
+                            <li><strong>Плавучие ворота тории</strong> — 16-метровые ворота в воде (икона Японии)</li>
+                            <li><strong>Храм Ицукусима</strong> — святилище на сваях над морем</li>
+                            <li><strong>Пятиярусная пагода</strong> — величественная красная пагода</li>
+                            <li><strong>Гора Мисэн (530м)</strong> — треккинг или канатная дорога</li>
+                            <li><strong>Момидзидани</strong> — парк кленов (краски осенью)</li>
+                            <li><strong>Дайган-дзи</strong> — храм у подножия Мисэн</li>
+                            <li><strong>Торговая улица Омотэсандо</strong> — сувениры и момидзи манджу</li>
+                            <li><strong>Священные олени</strong> — свободно гуляют по острову</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlights">
+                        <h4>📸 Лучшее время для фото:</h4>
+                        <ul>
+                            <li><strong>Прилив</strong> — ворота тории «плавают» в воде (магия!)</li>
+                            <li><strong>Отлив</strong> — можно дойти пешком до ворот</li>
+                            <li><strong>Закат</strong> — золотой свет на воротах и храме</li>
+                            <li><strong>Вечерняя подсветка</strong> — ворота освещаются после заката</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlights">
+                        <h4>⏰ Рекомендуемое время: 1 день (можно остаться на ночь в рёкан)</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: var(--color-surface); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); margin-bottom: 3rem;">
+            <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--color-primary);">🚄 Как добраться</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <strong>Осака/Киото → Хиросима:</strong> Синкансэн Токайдо-Санъё (1.5-2 часа, покрывается JR Pass)
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <strong>Хиросима → Миядзима:</strong> JR Sanyo Line до станции Miyajimaguchi (30 минут) + паром (10 минут, ¥180, покрывается JR Pass)
+                </li>
+                <li style="padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <strong>Паромы на Миядзиму:</strong> Отправляются каждые 15 минут, последний около 22:00. Два оператора: JR Ferry (покрывается JR Pass) и Matsudai Ferry
+                </li>
+                <li style="padding: 1rem 0;">
+                    <strong>На острове:</strong> Пешком (компактный размер) или канатная дорога на гору Мисэн (¥1840 туда-обратно)
+                </li>
+            </ul>
+        </div>
+
+        <div style="background: var(--color-surface); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); margin-bottom: 3rem;">
+            <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--color-primary);">🗺️ Идеальный маршрут (2 дня)</h3>
+            <div style="padding: 1.5rem; background: var(--color-bg); border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                <h4 style="font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--color-text);">День 1: Хиросима</h4>
+                <ul style="list-style: none; padding-left: 1rem;">
+                    <li style="padding: 0.5rem 0;">• <strong>Утро:</strong> Мемориальный парк мира + Музей (2-3 часа)</li>
+                    <li style="padding: 0.5rem 0;">• <strong>Обед:</strong> Окономияки в Окономимура</li>
+                    <li style="padding: 0.5rem 0;">• <strong>День:</strong> Замок Хиросимы + сад Сюккэйэн</li>
+                    <li style="padding: 0.5rem 0;">• <strong>Вечер:</strong> Торговая улица Хондори</li>
+                </ul>
+            </div>
+            <div style="padding: 1.5rem; background: var(--color-bg); border-radius: var(--radius-md);">
+                <h4 style="font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--color-text);">День 2: Миядзима</h4>
+                <ul style="list-style: none; padding-left: 1rem;">
+                    <li style="padding: 0.5rem 0;">• <strong>Утро:</strong> Раннее прибытие (8-9 утра) — меньше туристов</li>
+                    <li style="padding: 0.5rem 0;">• <strong>До обеда:</strong> Храм Ицукусима + ворота тории (проверьте расписание приливов!)</li>
+                    <li style="padding: 0.5rem 0;">• <strong>Обед:</strong> Момидзи манджу + устрицы</li>
+                    <li style="padding: 0.5rem 0;">• <strong>День:</strong> Восхождение на Мисэн (2-3 часа) или канатная дорога</li>
+                    <li style="padding: 0.5rem 0;">• <strong>Вечер:</strong> Закат у ворот тории (незабываемо!)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 3rem; border-radius: var(--radius-lg); color: white; text-align: center; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">💡 Совет путешественнику</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.95;">
+                <strong>Проверьте расписание приливов и отливов</strong> на Миядзиме заранее на <a href="https://www.miyajima.or.jp" style="color: white; text-decoration: underline;">официальном сайте</a>. Во время <strong>прилива</strong> (満潮 mancho) ворота тории выглядят как плавающие в воде — это классический вид. Во время <strong>отлива</strong> (干潮 kancho) можно дойти пешком до ворот и потрогать их. Оба вида прекрасны! Идеально: приехать рано утром при отливе, а остаться до вечера на прилив и закат. Не кормите оленей человеческой едой — они священные, но не всегда дружелюбные.
+            </p>
+        </div>
+
+        <a href="index.html" class="back-button">← Вернуться к главной странице</a>
+    </div>
+</body>
+</html>

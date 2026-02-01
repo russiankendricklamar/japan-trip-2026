@@ -329,6 +329,16 @@
             font-size: 1.05rem;
         }
 
+        .placeholder-hint {
+            padding: 1.5rem;
+            margin-top: 1rem;
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            border-radius: 8px;
+            color: #fff;
+            font-style: italic;
+        }
+
         /* --- Navigation --- */
         .nav-controls {
             position: fixed;
@@ -820,63 +830,47 @@
         <div class="timeline-node" onclick="toggleDetails(this)">
             <div class="node-point kyoto"></div>
             <div class="node-content">
-                <span class="time-badge">День 9 • 23 марта • среда</span>
-                <h3 class="location-title">Арасияма</h3>
+                <span class="time-badge">День 9 • 23 марта • понедельник</span>
+                <h3 class="location-title">Резервный день / Подготовка к встрече с группой A</h3>
                 <p class="location-desc">
-                    Бамбуковая роща Сагано → Храм Тэнрю-дзи (сад дзэн) → Мост Тогэцукё → Обезьяний парк Ивата-яма → Вечер: чайная церемония → Ужин в Гионе
+                    Варианты: Нара (олени + Тодай-дзи) • Осака (замок, Дотонбори) • Дополнительные храмы Киото (Kinkaku-ji, Arashiyama)
                 </p>
                 <button class="expand-btn">Подробнее ↓</button>
-                
+
                 <div class="detail-schedule">
                     <div class="schedule-item">
-                        <div class="schedule-time">09:00-10:00</div>
+                        <div class="schedule-time">На выбор</div>
                         <div class="schedule-content">
-                            <strong>Путь в Арасияму</strong><br>
-                            JR Sagano Line: Kyoto → Saga-Arashiyama (15 мин)
+                            <strong>Вариант А: Нара (奈良)</strong><br>
+                            • 09:00-10:00: Поезд Киото → Нара (35-45 мин)<br>
+                            • 10:30-13:00: Парк Нара с оленями (~1 200 диких оленей)<br>
+                            • 14:30-16:00: Храм Todai-ji с огромным Буддой (15 м)<br>
+                            • 16:30-18:00: Возврат в Киото
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">10:00-11:30</div>
+                        <div class="schedule-time">На выбор</div>
                         <div class="schedule-content">
-                            <strong>Бамбуковая роща Сагано</strong><br>
-                            • 500м тропа сквозь бамбук<br>
-                            • Лучшее время: раннее утро (меньше людей)<br>
-                            • Okochi Sanso Villa (опционально, 1 000 ¥)
+                            <strong>Вариант Б: Осака</strong><br>
+                            • 10:00-11:15: Поезд Киото → Осака (75 мин)<br>
+                            • 11:30-14:00: Osaka Castle или Dotonbori (уличная еда)<br>
+                            • 15:00-17:00: Возврат в Киото
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">11:30-13:00</div>
+                        <div class="schedule-time">На выбор</div>
                         <div class="schedule-content">
-                            <strong>Храм Тэнрю-дзи (天龍寺)</strong><br>
-                            • Объект ЮНЕСКО (1339)<br>
-                            • Сад дзэн с прудом Sogen<br>
-                            Вход: 500 ¥ (сад) + 300 ¥ (храм)
+                            <strong>Вариант В: Дополнительные храмы Киото</strong><br>
+                            • Kinkaku-ji (Золотой павильон)<br>
+                            • Ryoan-ji (знаменитый сухой сад)<br>
+                            • Arashiyama (бамбуковый лес)
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">13:00-14:30</div>
+                        <div class="schedule-time">18:00-20:00</div>
                         <div class="schedule-content">
-                            <strong>Обед + Мост Тогэцукё</strong><br>
-                            Деревянный мост через реку Кацура<br>
-                            Рестораны: соба, унаги, юдофу
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">14:30-16:30</div>
-                        <div class="schedule-content">
-                            <strong>Обезьяний парк Ивата-яма</strong><br>
-                            • 120+ японских макак<br>
-                            • Подъём 20 мин<br>
-                            • Вид на Киото с вершины<br>
-                            Вход: 550 ¥
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">17:00-18:00</div>
-                        <div class="schedule-content">
-                            <strong>Чайная церемония</strong><br>
-                            En Tea Ceremony (Gion) или Camellia Tea (Higashiyama)<br>
-                            ~3 000-5 000 ¥ за 60 мин
+                            <strong>Спокойный ужин</strong><br>
+                            Подготовка к завтрашней встрече с группой A
                         </div>
                     </div>
                 </div>
@@ -887,65 +881,41 @@
         <div class="timeline-node" onclick="toggleDetails(this)">
             <div class="node-point kyoto"></div>
             <div class="node-content">
-                <span class="time-badge">День 10 • 24 марта • четверг</span>
-                <h3 class="location-title">Нара (однодневная поездка)</h3>
+                <span class="time-badge">День 10 • 24 марта • вторник ⭐</span>
+                <h3 class="location-title">Нестандартный день • ВСТРЕЧА С ГРУППОЙ A</h3>
                 <p class="location-desc">
-                    Поезд в Нару (45 мин) → Парк оленей Нара (1 200+ ручных оленей) → Храм Тодай-дзи (Великий Будда 15м) → Обед → Касуга-тайся (3 000 каменных фонарей) → Обратно в Киото
+                    Kurama & Kibune (горные деревни к северу) → Совместный кайсэки-ужин с группой A в Гионе
                 </p>
                 <button class="expand-btn">Подробнее ↓</button>
-                
+
                 <div class="detail-schedule">
                     <div class="schedule-item">
-                        <div class="schedule-time">09:00-10:00</div>
+                        <div class="schedule-time">10:00-11:00</div>
                         <div class="schedule-content">
-                            <strong>Путь в Нару</strong><br>
-                            Kintetsu Line: Kyoto → Kintetsu Nara (45 мин, 640 ¥)<br>
-                            Альтернатива: JR Nara Line (50 мин, покрывается JR Pass)
+                            <strong>Трансфер в Kurama & Kibune</strong><br>
+                            Горные деревни к северу, ~1 час
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">10:00-12:00</div>
+                        <div class="schedule-time">11:30-17:00</div>
                         <div class="schedule-content">
-                            <strong>Парк оленей Нара</strong><br>
-                            • 1 200+ ручных оленей (священные посланники богов)<br>
-                            • Покупка печенья shika-senbei (200 ¥)<br>
-                            • 502 гектара<br>
-                            💡 Олени кланяются перед едой!
+                            <strong>Программа:</strong><br>
+                            • Канатная дорога (ropeway) на высоту<br>
+                            • Kibune Shrine (святилище воды в лесу)<br>
+                            • Hiking trail через лес с водопадами и горячими источниками<br>
+                            • Kaiseki или нюкумэн в горячих источниках на берегу реки
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">12:00-13:30</div>
+                        <div class="schedule-time">18:00-19:30</div>
                         <div class="schedule-content">
-                            <strong>Храм Тодай-дзи (東大寺)</strong><br>
-                            • Великий Будда (Daibutsu) — 15м высота, 500 тонн<br>
-                            • Крупнейшее деревянное здание в мире<br>
-                            • Столб с отверстием для удачи<br>
-                            Вход: 600 ¥
+                            <strong>Возврат в центр Киото</strong>
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">13:30-14:30</div>
+                        <div class="schedule-time">20:00-22:00</div>
                         <div class="schedule-content">
-                            <strong>Обед в Нара</strong><br>
-                            Kakinoha-zushi (суши в листьях хурмы)<br>
-                            1 000-2 000 ¥
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">14:30-16:00</div>
-                        <div class="schedule-content">
-                            <strong>Касуга-тайся (春日大社)</strong><br>
-                            • 3 000 каменных и бронзовых фонарей<br>
-                            • Тропа через лес с мхом<br>
-                            • Основан в 768 году<br>
-                            Вход: 500 ¥
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">17:00-18:00</div>
-                        <div class="schedule-content">
-                            <strong>Обратный путь в Киото</strong><br>
-                            Kintetsu Line: Nara → Kyoto (45 мин)
+                            <strong>🤝 СОВМЕСТНЫЙ КАЙСЭКИ-УЖИН С ГРУППОЙ A В ГИОНЕ</strong>
                         </div>
                     </div>
                 </div>
@@ -956,67 +926,62 @@
         <div class="timeline-node" onclick="toggleDetails(this)">
             <div class="node-point kyoto"></div>
             <div class="node-content">
-                <span class="time-badge">День 11 • 25 марта • пятница</span>
-                <h3 class="location-title">Северный Киото</h3>
+                <span class="time-badge">День 11 • 25 марта • среда ⭐</span>
+                <h3 class="location-title">Альтернативная культура Киота • ВЕСЬ ДЕНЬ С ГРУППОЙ A</h3>
                 <p class="location-desc">
-                    Кинкаку-дзи (Золотой павильон) → Рёан-дзи (сад камней дзэн) → Обед → Замок Нидзё (дворец сёгунов) → Вечер: рынок Нисики → Ужин в Понточо
+                    Nanzenji Temple → Philosopher's Path → Eikandō Temple → Ginkakuji на закате
                 </p>
                 <button class="expand-btn">Подробнее ↓</button>
-                
+
                 <div class="detail-schedule">
                     <div class="schedule-item">
-                        <div class="schedule-time">09:00-10:30</div>
+                        <div class="schedule-time">09:00-11:00</div>
                         <div class="schedule-content">
-                            <strong>Кинкаку-дзи (金閣寺) — Золотой павильон</strong><br>
-                            • 3 этажа покрыты золотом<br>
-                            • Отражение в пруду Kyoko-chi<br>
-                            • Построен в 1397, сожжён в 1950, восстановлен в 1955<br>
-                            Вход: 500 ¥
+                            <strong>Nanzenji Temple (南禅寺)</strong><br>
+                            Древний храм с сухим садом + акведук<br>
+                            Менее туристический, чем Ryoanji
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">10:45-12:00</div>
+                        <div class="schedule-time">11:30-14:00</div>
                         <div class="schedule-content">
-                            <strong>Рёан-дзи (龍安寺)</strong><br>
-                            • Знаменитый сад камней дзэн (15 камней)<br>
-                            • Невозможно увидеть все 15 одновременно<br>
-                            • Медитативная атмосфера<br>
-                            Вход: 500 ¥
+                            <strong>Philosopher's Path (哲学の道)</strong><br>
+                            2 км прогулки вдоль канала<br>
+                            Вишнёвые деревья, маленькие храмы, кафе, дизайнерские лавки
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">12:30-13:30</div>
+                        <div class="schedule-time">14:00-15:00</div>
                         <div class="schedule-content">
-                            <strong>Обед</strong><br>
-                            Обори (тофу-рёри) или рамэн<br>
-                            1 500-2 500 ¥
+                            <strong>Обед</strong>
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">14:00-16:00</div>
+                        <div class="schedule-time">15:30-17:00</div>
                         <div class="schedule-content">
-                            <strong>Замок Нидзё (二条城)</strong><br>
-                            • Резиденция сёгунов Токугава (1603)<br>
-                            • «Соловьиные полы» (скрипят при ходьбе — защита от ниндзя)<br>
-                            • Объект ЮНЕСКО<br>
-                            Вход: 1 300 ¥
+                            <strong>Eikandō Temple (永観堂) + Konchi-in</strong><br>
+                            Храм с парком, статуя Будды, виды на Киото<br>
+                            Nanzenji Subtemple — красивый сухой сад
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">16:30-18:00</div>
+                        <div class="schedule-time">17:30-19:00</div>
                         <div class="schedule-content">
-                            <strong>Рынок Нисики (錦市場)</strong><br>
-                            • «Кухня Киото» — 400м крытого рынка<br>
-                            • 100+ магазинов<br>
-                            • Уличная еда: такояки, якитори, мороженое с матча
+                            <strong>Ginkakuji (銀閣寺 Silver Pavilion) на закате</strong><br>
+                            Менее известен, чем Kinkakuji, но атмосфернее<br>
+                            Прогулка по соседним улочкам
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">18:30-20:00</div>
+                        <div class="schedule-time">19:30-21:00</div>
                         <div class="schedule-content">
-                            <strong>Ужин в Понточо</strong><br>
-                            Рестораны на берегу реки<br>
-                            3 000-6 000 ¥
+                            <strong>Ужин</strong>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">10:00-19:00</div>
+                        <div class="schedule-content">
+                            <strong>🤝 ВЕСЬ ДЕНЬ С ГРУППОЙ A</strong>
                         </div>
                     </div>
                 </div>
@@ -1027,49 +992,55 @@
         <div class="timeline-node" onclick="toggleDetails(this)">
             <div class="node-point kyoto"></div>
             <div class="node-content">
-                <span class="time-badge">День 12 • 26 марта • суббота</span>
-                <h3 class="location-title">Инари и Южный Киото</h3>
+                <span class="time-badge">День 12 • 26 марта • четверг ⭐</span>
+                <h3 class="location-title">Нестандартные активности • ВЕСЬ ДЕНЬ С ГРУППОЙ A</h3>
                 <p class="location-desc">
-                    Фусими Инари (10 000 красных ворот тории) → Подъём на гору (2-3 часа) → Обед → Императорская вилла Кацура или сады Сайхо-дзи → Вечер: гейша-шоу или прощальный ужин
+                    Fushimi Sake District → Daigo-ji Temple / Byodoin Temple → Uji Tea Experience
                 </p>
                 <button class="expand-btn">Подробнее ↓</button>
-                
+
                 <div class="detail-schedule">
                     <div class="schedule-item">
-                        <div class="schedule-time">08:00-11:30</div>
+                        <div class="schedule-time">09:00-12:00</div>
                         <div class="schedule-content">
-                            <strong>Фусими Инари-тайся (伏見稲荷大社)</strong><br>
-                            • 10 000 красных ворот тории<br>
-                            • Храм бога риса и процветания<br>
-                            • Подъём на гору Инари (233м, ~2-3 часа туда-обратно)<br>
-                            • Лучшее время: раннее утро (меньше туристов)<br>
-                            Вход: бесплатно
+                            <strong>Fushimi Sake District (伏見酒造)</strong><br>
+                            Район пивоварен саке к югу от Киото<br>
+                            Дегустация саке, традиционные пивоварни, музей
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">12:00-13:00</div>
+                        <div class="schedule-time">13:00-14:00</div>
                         <div class="schedule-content">
-                            <strong>Обед в районе Инари</strong><br>
-                            Inari-zushi (суши с тофу) — местная специальность<br>
-                            1 000-1 500 ¥
+                            <strong>Обед</strong>
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">14:00-16:00</div>
+                        <div class="schedule-time">14:30-17:00</div>
                         <div class="schedule-content">
                             <strong>На выбор:</strong><br>
-                            <strong>А:</strong> Императорская вилла Кацура (бронь за 3 месяца!)<br>
-                            <strong>Б:</strong> Сайхо-дзи (Храм мха, 3 000 ¥, бронь заранее)<br>
-                            <strong>В:</strong> Шопинг в Kawaramachi/Shijo
+                            <strong>А:</strong> Daigo-ji Temple (醍醐寺) — пятиэтажная пагода в горах (парк слив, весна)<br>
+                            <strong>Б:</strong> Byodoin Temple (平等院) в Uji — архитектура XI века, отражение в пруду
                         </div>
                     </div>
                     <div class="schedule-item">
-                        <div class="schedule-time">18:00-20:00</div>
+                        <div class="schedule-time">17:30-19:00</div>
                         <div class="schedule-content">
-                            <strong>Вечер:</strong><br>
-                            <strong>Опция 1:</strong> Гейша-шоу в Gion Corner (~3 000 ¥)<br>
-                            <strong>Опция 2:</strong> Прощальный кайсэки-ужин<br>
-                            8 000-15 000+ ¥
+                            <strong>Uji Tea Experience (宇治茶)</strong><br>
+                            Чайная церемония<br>
+                            Дегустация матча<br>
+                            Традиционное печенье
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">19:30-21:00</div>
+                        <div class="schedule-content">
+                            <strong>Ужин</strong>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">09:00-19:00</div>
+                        <div class="schedule-content">
+                            <strong>🤝 ВЕСЬ ДЕНЬ С ГРУППОЙ A</strong>
                         </div>
                     </div>
                 </div>
@@ -1086,49 +1057,11 @@
                     Checkout → Поезд в Осаку (30 мин) → Замок Осака → Обед → Район Дотонбори (неоновые вывески) → Уличная еда: такояки, окономияки → Ночной шопинг в Namba
                 </p>
                 <button class="expand-btn">Подробнее ↓</button>
-                
+
                 <div class="detail-schedule">
-                    <div class="schedule-item">
-                        <div class="schedule-time">10:00-10:30</div>
-                        <div class="schedule-content">
-                            <strong>Путь в Осаку</strong><br>
-                            JR Tokaido Line: Kyoto → Osaka (30 мин, покрывается JR Pass)
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">11:00-13:30</div>
-                        <div class="schedule-content">
-                            <strong>Замок Осака (大阪城)</strong><br>
-                            • Построен в 1583 Тоётоми Хидэёси<br>
-                            • 8 этажей, музей внутри<br>
-                            • Парк вокруг замка (сакура в конце марта)<br>
-                            Вход: 600 ¥
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">13:30-14:30</div>
-                        <div class="schedule-content">
-                            <strong>Обед</strong><br>
-                            Okonomiyaki (осакский стиль) или кушикацу<br>
-                            1 500-2 500 ¥
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">15:00-16:00</div>
-                        <div class="schedule-content">
-                            <strong>Заселение в отель</strong><br>
-                            Район Namba или Umeda
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">17:00-21:00</div>
-                        <div class="schedule-content">
-                            <strong>Район Дотонбори (道頓堀)</strong><br>
-                            • Неоновые вывески: Glico Man, краб<br>
-                            • Мост Ebisu-bashi<br>
-                            • Уличная еда: такояки, окономияки, кушикацу<br>
-                            • Шопинг в Shinsaibashi & Namba Parks
-                        </div>
+                    <div class="placeholder-hint">
+                        ✏️ Это расписание можно детализировать позже.<br>
+                        Добавьте точные времена поездки, заселения, посещения достопримечательностей и ужина.
                     </div>
                 </div>
             </div>
@@ -1144,45 +1077,11 @@
                     Последнее утро в Осаке → Финальный шопинг или Kuromon Market → Трансфер в аэропорт Кансай → Вылет
                 </p>
                 <button class="expand-btn">Подробнее ↓</button>
-                
+
                 <div class="detail-schedule">
-                    <div class="schedule-item">
-                        <div class="schedule-time">08:00-10:00</div>
-                        <div class="schedule-content">
-                            <strong>Последнее утро</strong><br>
-                            Завтрак, упаковка чемоданов
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">10:00-12:00</div>
-                        <div class="schedule-content">
-                            <strong>На выбор:</strong><br>
-                            <strong>А:</strong> Kuromon Market — «кухня Осаки»<br>
-                            <strong>Б:</strong> Финальный шопинг в Namba/Shinsaibashi<br>
-                            <strong>В:</strong> Umeda Sky Building (смотровая, 1 500 ¥)
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">12:30-13:30</div>
-                        <div class="schedule-content">
-                            <strong>Checkout из отеля</strong>
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">14:00-15:30</div>
-                        <div class="schedule-content">
-                            <strong>Трансфер в аэропорт Кансай</strong><br>
-                            Nankai Rapi:t Express: Namba → Kansai Airport (40 мин, 1 450 ¥)<br>
-                            Альтернатива: JR Haruka Express (50 мин, покрывается JR Pass)
-                        </div>
-                    </div>
-                    <div class="schedule-item">
-                        <div class="schedule-time">16:00+</div>
-                        <div class="schedule-content">
-                            <strong>Вылет домой</strong><br>
-                            さようなら、日本！ (Sayonara, Nihon!)<br>
-                            💡 Приезжайте на 3-4 часа до вылета международных рейсов
-                        </div>
+                    <div class="placeholder-hint">
+                        ✏️ Это расписание можно детализировать позже.<br>
+                        Добавьте точные времена завтрака, шопинга, checkout, трансфера и вылета.
                     </div>
                 </div>
             </div>

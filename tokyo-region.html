@@ -287,12 +287,14 @@
 
         /* --- Mobile --- */
         @media (max-width: 768px) {
-            .timeline-container::before { left: 20px; }
-            .node-point { left: 20px; }
-            .node-content { 
-                width: 85%; 
-                margin-left: 50px !important; 
-                text-align: left !important; 
+            .timeline-container { padding: 0 15px 4rem 15px; }
+            .timeline-container::before { left: 30px; }
+            .node-point { left: 30px; transform: translateX(-50%); }
+            .node-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                text-align: left !important;
+                padding: 1.5rem;
             }
             .timeline-node:nth-child(odd) .node-content::after,
             .timeline-node:nth-child(even) .node-content::after {
@@ -301,6 +303,7 @@
                 border-color: transparent var(--card-bg) transparent transparent;
             }
             h1 { font-size: 2rem; }
+            .location-title { font-size: 1.2rem; }
             .nav-controls { flex-direction: row; right: 1rem; bottom: 1rem; }
         }
     </style>
@@ -312,7 +315,7 @@
         <svg class="flight-path" viewBox="0 0 1000 200" preserveAspectRatio="none">
             <path d="M -100 50 Q 400 300 1200 100" fill="transparent" />
         </svg>
-        <div class="plane-icon" style="offset-path: path('M -100 50 Q 400 300 1200 100');"></div>
+        <div class="plane-icon" style="offset-path: path('M -100 50 Q 400 300 1200 100');">✈️</div>
     </div>
 
     <!-- Header -->
@@ -526,7 +529,12 @@
                 <span class="time-badge">26 марта</span>
                 <h3 class="location-title">Киото</h3>
                 <p class="location-desc">
-                    
+                    Завтрак<br>
+                    Свободное время / шоппинг<br>
+                    Район Понточо или Каварамачи<br>
+                    Обед<br>
+                    Подготовка к переезду в Осаку<br>
+                    Ужин в Киото<br>
                 </p>
             </div>
         </div>
@@ -540,7 +548,11 @@
                 <p class="location-desc">
                     Завтрак<br>
                     Отъезд из Киото в Осаку<br>
-
+                    Заселение в отель<br>
+                    Обед<br>
+                    Район Дотонбори<br>
+                    Прогулка по Нанба<br>
+                    Ужин в Осаке<br>
                 </p>
             </div>
         </div>
@@ -552,10 +564,12 @@
                 <span class="time-badge">28 марта</span>
                 <h3 class="location-title">Осака</h3>
                 <p class="location-desc">
-                    <!-- Станция Токио. Посадка на синкансэн Tokaido Shinkansen (Nozomi/Hikari).
-                    Направление: Киото/Осака (2.5 часа, покрывается JR Pass).
-                    Упаковка багажа, проверка билетов, покупка ekiben (станционный бенто) на дорогу.
-                    <strong>Конец Phase 1. Переход к Phase 2: Kansai Region.</strong> -->
+                    Завтрак<br>
+                    Замок Осака<br>
+                    Обед<br>
+                    Свободное время<br>
+                    Подготовка к следующему этапу путешествия<br>
+                    Ужин<br>
                 </p>
             </div>
         </div>

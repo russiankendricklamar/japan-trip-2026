@@ -6,99 +6,122 @@
     <title>Japan Trip 2026: Full Timeline | 15-28 марта</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: rgba(40, 30, 70, 0.7);
-            --accent-tokyo: #667eea;
-            --accent-kyoto: #f59e0b;
-            --accent-osaka: #ec4899;
-            --accent-glow: rgba(102, 126, 234, 0.5);
-            --secondary-accent: #764ba2;
+            --bg-color: #0a1628;
+            --card-bg: rgba(20, 35, 70, 0.7);
+            --accent-color: #4f46e5;
+            --accent-glow: rgba(79, 70, 229, 0.5);
+            --secondary-color: #06b6d4;
             --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
+            --text-secondary: #a5b4d6;
+            --line-color: #2a3a5e;
             --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #f59e0b 35%, #ec4899 70%, #764ba2 100%);
+            background: linear-gradient(135deg, #0a1628 0%, #1a2642 50%, #0a1628 100%);
             color: var(--text-primary);
             font-family: var(--font-main);
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* --- Flight Animation --- */
-        .flight-overlay {
+        /* Animated Background Particles */
+        .bg-particles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.2;
+            overflow: hidden;
         }
 
-        .plane-icon {
+        .particle {
             position: absolute;
-            font-size: 2rem;
-            animation: flight 15s linear infinite;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+            width: 4px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite ease-in-out;
         }
 
-        @keyframes flight {
-            0% { top: 10%; left: -5%; opacity: 0; }
-            10% { opacity: 1; }
-            50% { top: 50%; left: 50%; }
-            90% { opacity: 1; }
-            100% { top: 80%; left: 105%; opacity: 0; }
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .particle:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) scale(1); opacity: 0; }
+            10% { opacity: 0.3; }
+            50% { transform: translateY(50vh) scale(1.5); opacity: 0.5; }
+            90% { opacity: 0.3; }
         }
 
-        /* --- Header --- */
+        /* Train/Transition Animation */
+        .train-overlay {
+            position: fixed;
+            top: 50%;
+            left: -100%;
+            width: 200px;
+            height: 80px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            z-index: 1;
+            animation: trainPass 12s linear infinite;
+            opacity: 0.3;
+            filter: blur(20px);
+        }
+
+        @keyframes trainPass {
+            0% { left: -200px; }
+            100% { left: calc(100% + 200px); }
+        }
+
+        /* Header */
         header {
             position: relative;
             z-index: 10;
-            padding: 3rem 2rem;
+            padding: 2rem;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), transparent);
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            background: linear-gradient(90deg, #fff, #f59e0b, #ec4899);
+            background: linear-gradient(90deg, #fff, var(--accent-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 800;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px var(--accent-glow)); }
+            50% { filter: drop-shadow(0 0 20px var(--accent-glow)); }
         }
 
         .mission-status {
             display: inline-block;
-            padding: 0.6rem 1.2rem;
-            border: 2px solid rgba(255, 255, 255, 0.6);
-            border-radius: 25px;
-            color: var(--text-primary);
-            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent-color);
+            border-radius: 20px;
+            color: var(--accent-color);
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            background: rgba(255, 255, 255, 0.15);
-            font-weight: 700;
+            letter-spacing: 1px;
+            background: rgba(79, 70, 229, 0.1);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        .subtitle {
-            color: var(--text-primary);
-            margin-top: 1rem;
-            font-size: 1.2rem;
-            opacity: 0.95;
-            font-weight: 500;
-        }
-
-        /* --- Timeline --- */
+        /* Timeline Container */
         .timeline-container {
             position: relative;
-            max-width: 950px;
+            max-width: 900px;
             margin: 4rem auto;
-            padding: 0 20px 4rem 20px;
+            padding: 0 20px 6rem 20px;
             z-index: 10;
         }
 
@@ -107,29 +130,26 @@
             position: absolute;
             top: 0;
             left: 50%;
-            width: 4px;
+            width: 3px;
             height: 100%;
-            background: linear-gradient(180deg, 
-                var(--accent-tokyo) 0%, 
-                var(--accent-tokyo) 42%, 
-                var(--accent-kyoto) 42%, 
-                var(--accent-kyoto) 85%, 
-                var(--accent-osaka) 85%, 
-                var(--accent-osaka) 100%
-            );
+            background: linear-gradient(to bottom, var(--accent-color), var(--secondary-color));
             transform: translateX(-50%);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
         .timeline-node {
             position: relative;
-            margin-bottom: 5rem;
+            margin-bottom: 8rem;
             width: 100%;
             display: flex;
             justify-content: center;
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateY(60px);
+            transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .timeline-node:last-child {
+            margin-bottom: 4rem;
         }
 
         .timeline-node.visible {
@@ -140,64 +160,68 @@
         .node-point {
             position: absolute;
             left: 50%;
-            top: 25px;
+            top: 30px;
             transform: translateX(-50%);
-            width: 26px;
-            height: 26px;
-            background: var(--secondary-accent);
-            border: 4px solid rgba(255, 255, 255, 0.95);
+            width: 24px;
+            height: 24px;
+            background: var(--bg-color);
+            border: 4px solid var(--accent-color);
             border-radius: 50%;
             z-index: 5;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.7), inset 0 0 12px rgba(255, 255, 255, 0.4);
-            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 20px var(--accent-glow);
+            animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.7), inset 0 0 12px rgba(255, 255, 255, 0.4); }
-            50% { box-shadow: 0 0 35px rgba(255, 255, 255, 0.9), inset 0 0 18px rgba(255, 255, 255, 0.6); }
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
         }
 
         .node-point.start { 
             border-color: #4ade80; 
-            background: #22c55e;
-            box-shadow: 0 0 25px rgba(74, 222, 128, 0.8), inset 0 0 12px rgba(74, 222, 128, 0.5);
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.6);
+            width: 30px;
+            height: 30px;
         }
         
         .node-point.end { 
-            border-color: #f43f5e;
-            background: #e11d48;
-            box-shadow: 0 0 25px rgba(244, 63, 94, 0.8), inset 0 0 12px rgba(244, 63, 94, 0.5);
+            border-color: var(--secondary-color); 
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+            width: 30px;
+            height: 30px;
         }
 
-        .node-point.kyoto {
-            border-color: #fbbf24;
-            background: #f59e0b;
-            box-shadow: 0 0 25px rgba(251, 191, 36, 0.8), inset 0 0 12px rgba(251, 191, 36, 0.5);
+        .node-point.tokyo { 
+            border-color: #4f46e5; 
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
         }
 
-        .node-point.osaka {
-            border-color: #f472b6;
-            background: #ec4899;
-            box-shadow: 0 0 25px rgba(244, 114, 182, 0.8), inset 0 0 12px rgba(244, 114, 182, 0.5);
+        .node-point.kyoto { 
+            border-color: #f59e0b; 
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
+        }
+
+        .node-point.osaka { 
+            border-color: #ec4899; 
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
         }
 
         .node-content {
             width: 52%;
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(15px);
             padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            border: 1px solid rgba(79, 70, 229, 0.3);
             position: relative;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 6;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .node-content:hover {
             transform: scale(1.03);
-            border-color: rgba(255, 255, 255, 0.45);
-            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 15px 50px rgba(79, 70, 229, 0.3);
         }
 
         .timeline-node:nth-child(odd) .node-content {
@@ -215,7 +239,7 @@
         .timeline-node:nth-child(odd) .node-content::after {
             content: '';
             position: absolute;
-            top: 20px;
+            top: 30px;
             right: -40px;
             border-width: 15px 0 15px 40px;
             border-style: solid;
@@ -225,7 +249,7 @@
         .timeline-node:nth-child(even) .node-content::after {
             content: '';
             position: absolute;
-            top: 20px;
+            top: 30px;
             left: -40px;
             border-width: 15px 40px 15px 0;
             border-style: solid;
@@ -234,37 +258,35 @@
 
         .time-badge {
             display: inline-block;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.25));
-            color: #fff;
-            padding: 5px 14px;
-            border-radius: 8px;
-            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: bold;
             font-size: 0.8rem;
             margin-bottom: 0.8rem;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
         }
 
         .location-title {
-            font-size: 1.45rem;
+            font-size: 1.4rem;
             font-weight: 700;
             margin: 0.8rem 0;
             color: #fff;
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+            text-shadow: 0 2px 10px rgba(79, 70, 229, 0.3);
         }
 
         .location-desc {
-            font-size: 1rem;
-            color: var(--text-primary);
-            line-height: 1.75;
-            opacity: 0.92;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
         .expand-btn {
             margin-top: 1rem;
             padding: 9px 18px;
-            background: rgba(255, 255, 255, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(79, 70, 229, 0.2);
+            border: 1px solid rgba(79, 70, 229, 0.4);
             border-radius: 22px;
             color: #fff;
             font-size: 0.9rem;
@@ -275,7 +297,7 @@
         }
 
         .expand-btn:hover {
-            background: rgba(255, 255, 255, 0.35);
+            background: rgba(79, 70, 229, 0.35);
             transform: translateY(-2px);
         }
 
@@ -292,7 +314,7 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            border-bottom: 1px solid rgba(79, 70, 229, 0.2);
         }
 
         .schedule-item:last-child {
@@ -307,7 +329,7 @@
             font-weight: 700;
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.95);
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(79, 70, 229, 0.2);
             padding: 5px 10px;
             border-radius: 8px;
             text-align: center;
@@ -332,14 +354,14 @@
         .placeholder-hint {
             padding: 1.5rem;
             margin-top: 1rem;
-            background: rgba(255, 193, 7, 0.1);
-            border-left: 4px solid #ffc107;
+            background: rgba(6, 182, 212, 0.1);
+            border-left: 4px solid #06b6d4;
             border-radius: 8px;
             color: #fff;
             font-style: italic;
         }
 
-        /* --- Navigation --- */
+        /* Navigation */
         .nav-controls {
             position: fixed;
             bottom: 2rem;
@@ -351,47 +373,67 @@
         }
 
         .btn-back {
-            background: rgba(255,255,255,0.18);
-            backdrop-filter: blur(8px);
+            background: rgba(79, 70, 229, 0.2);
+            backdrop-filter: blur(10px);
             color: white;
             text-decoration: none;
             padding: 12px 24px;
             border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.35);
+            border: 1px solid var(--accent-color);
             transition: all 0.3s;
             font-weight: 600;
-            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             text-align: center;
-            white-space: nowrap;
         }
 
         .btn-back:hover {
-            background: rgba(255, 255, 255, 0.35);
-            border-color: rgba(255, 255, 255, 0.6);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 25px rgba(255, 255, 255, 0.4);
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px var(--accent-glow);
         }
 
-        /* --- Mobile --- */
+        /* Mobile */
         @media (max-width: 768px) {
             .timeline-container::before { left: 20px; }
-            .node-point { left: 20px; }
+            .node-point { left: 20px; transform: translateX(0); }
             .node-content { 
-                width: 85%; 
-                margin-left: 50px !important; 
+                width: calc(100% - 60px); 
+                margin-left: 60px !important; 
                 text-align: left !important; 
             }
             .timeline-node:nth-child(odd) .node-content::after,
             .timeline-node:nth-child(even) .node-content::after {
                 left: -20px;
-                top: 20px;
+                top: 30px;
                 border-width: 15px 20px 15px 0;
                 border-color: transparent var(--card-bg) transparent transparent;
             }
-            h1 { font-size: 2.2rem; }
+            .nav-controls {
+                right: 1rem;
+                bottom: 1rem;
+            }
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
+<body>
+
+    <!-- Background Effects -->
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    <div class="train-overlay"></div>
+
+    <header>
+        <div class="mission-status">Group B Journey</div>
+        <h1>Tokyo & Kansai Adventure</h1>
+        <p style="color: var(--text-secondary);">Группа B • Таймлайн: 15 марта – 28 марта</p>
+    </header>
+
 <body>
 
     <div class="flight-overlay">
@@ -1123,4 +1165,3 @@
         }
     </script>
 </body>
-</html>

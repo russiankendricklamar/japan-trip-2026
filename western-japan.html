@@ -196,21 +196,23 @@
         }
 
         .timeline-node:nth-child(odd) .node-content {
-            margin-right: auto;
-            text-align: right;
+            margin-right: calc(50% + 60px);
+            margin-left: 0;
+            text-align: left;
         }
-        
+
         .timeline-node:nth-child(even) .node-content {
-            margin-left: auto;
+            margin-left: calc(50% + 60px);
+            margin-right: 0;
             text-align: left;
         }
 
         .timeline-node:nth-child(odd) .node-content::after {
             content: '';
             position: absolute;
-            top: 30px;
-            right: -15px;
-            border-width: 12px 0 12px 15px;
+            top: 20px;
+            right: -40px;
+            border-width: 15px 0 15px 40px;
             border-style: solid;
             border-color: transparent transparent transparent var(--card-bg);
         }
@@ -218,9 +220,9 @@
         .timeline-node:nth-child(even) .node-content::after {
             content: '';
             position: absolute;
-            top: 30px;
-            left: -15px;
-            border-width: 12px 15px 12px 0;
+            top: 20px;
+            left: -40px;
+            border-width: 15px 40px 15px 0;
             border-style: solid;
             border-color: transparent var(--card-bg) transparent transparent;
         }
@@ -285,8 +287,9 @@
             }
             .timeline-node:nth-child(odd) .node-content::after,
             .timeline-node:nth-child(even) .node-content::after {
-                left: -15px;
-                border-width: 12px 15px 12px 0;
+                left: -20px;
+                top: 20px;
+                border-width: 15px 20px 15px 0;
                 border-color: transparent var(--card-bg) transparent transparent;
             }
             h1 { font-size: 2rem; }

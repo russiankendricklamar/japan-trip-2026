@@ -192,7 +192,7 @@
         }
 
         .node-content {
-            width: 48%;
+            width: 52%;
             background: var(--card-bg);
             backdrop-filter: blur(15px);
             padding: 2rem;
@@ -210,21 +210,23 @@
         }
 
         .timeline-node:nth-child(odd) .node-content {
-            margin-right: auto;
-            text-align: right;
+            margin-right: calc(50% + 60px);
+            margin-left: 0;
+            text-align: left;
         }
-        
+
         .timeline-node:nth-child(even) .node-content {
-            margin-left: auto;
+            margin-left: calc(50% + 60px);
+            margin-right: 0;
             text-align: left;
         }
 
         .timeline-node:nth-child(odd) .node-content::after {
             content: '';
             position: absolute;
-            top: 35px;
-            right: -12px;
-            border-width: 12px 0 12px 12px;
+            top: 20px;
+            right: -40px;
+            border-width: 15px 0 15px 40px;
             border-style: solid;
             border-color: transparent transparent transparent var(--card-bg);
         }
@@ -232,9 +234,9 @@
         .timeline-node:nth-child(even) .node-content::after {
             content: '';
             position: absolute;
-            top: 35px;
-            left: -12px;
-            border-width: 12px 12px 12px 0;
+            top: 20px;
+            left: -40px;
+            border-width: 15px 40px 15px 0;
             border-style: solid;
             border-color: transparent var(--card-bg) transparent transparent;
         }
@@ -320,8 +322,9 @@
             }
             .timeline-node:nth-child(odd) .node-content::after,
             .timeline-node:nth-child(even) .node-content::after {
-                left: -12px;
-                border-width: 12px 12px 12px 0;
+                left: -20px;
+                top: 20px;
+                border-width: 15px 20px 15px 0;
                 border-color: transparent var(--card-bg) transparent transparent;
             }
             .nav-controls {

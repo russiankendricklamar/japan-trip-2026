@@ -341,6 +341,42 @@
             line-height: 1.7;
         }
 
+        .info-route {
+            margin-top: 1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1a1a2e;
+        }
+
+        .group-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .group-link {
+            text-decoration: none;
+        }
+
+        .group-card {
+            background: #ffffff;
+            color: #1a1a2e;
+            cursor: pointer;
+        }
+
+        .group-card .info-icon {
+            background: rgba(0, 0, 0, 0.06);
+        }
+
+        .group-card .info-title {
+            color: #1a1a2e;
+        }
+
+        .group-card .info-text {
+            color: #505565;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -379,31 +415,31 @@
         <h2 class="section-title">3 группы со своим маршрутом</h2>
 
         <!-- Regional Groups Navigation -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
-            <a href="tokyo-region.html" style="text-decoration: none;">
-                <div class="info-card" style="background: #ffffff; color: #1a1a2e; cursor: pointer;">
-                    <div class="info-icon" style="background: rgba(0, 0, 0, 0.06);"></div>
-                    <h3 class="info-title" style="color: #1a1a2e;">Сережа, Женя, Дима</h3>
-                    <p class="info-text" style="color: #505565;">Путешествие по базовому маршруту (по лекалам Егора в 2025, но в обратном порядке)</p>
-                    <div style="margin-top: 1rem; font-weight: 600; font-size: 0.95rem; color: #1a1a2e;">Токио • Фудзи • Киото • Осака →</div>
+        <div class="group-cards-grid">
+            <a href="tokyo-region.html" class="group-link">
+                <div class="info-card group-card">
+                    <div class="info-icon"></div>
+                    <h3 class="info-title">Сережа, Женя, Дима</h3>
+                    <p class="info-text">Путешествие по базовому маршруту (по лекалам Егора в 2025, но в обратном порядке)</p>
+                    <div class="info-route">Токио • Фудзи • Киото • Осака →</div>
                 </div>
             </a>
 
-            <a href="kansai-region.html" style="text-decoration: none;">
-                <div class="info-card" style="background: #ffffff; color: #1a1a2e; cursor: pointer;">
-                    <div class="info-icon" style="background: rgba(0, 0, 0, 0.06);"></div>
-                    <h3 class="info-title" style="color: #1a1a2e;">Миша</h3>
-                    <p class="info-text" style="color: #505565;">Путешествие по базовому маршруту (по лекалам Егора в 2025)</p>
-                    <div style="margin-top: 1rem; font-weight: 600; font-size: 0.95rem; color: #1a1a2e;">Осака • Киото • Ф1 • Токио • Шанхай →</div>
+            <a href="kansai-region.html" class="group-link">
+                <div class="info-card group-card">
+                    <div class="info-icon"></div>
+                    <h3 class="info-title">Миша</h3>
+                    <p class="info-text">Путешествие по базовому маршруту (по лекалам Егора в 2025)</p>
+                    <div class="info-route">Осака • Киото • Ф1 • Токио • Шанхай →</div>
                 </div>
             </a>
 
-            <a href="western-japan.html" style="text-decoration: none;">
-                <div class="info-card" style="background: #ffffff; color: #1a1a2e; cursor: pointer;">
-                    <div class="info-icon" style="background: rgba(0, 0, 0, 0.06);"></div>
-                    <h3 class="info-title" style="color: #1a1a2e;">Егор</h3>
-                    <p class="info-text" style="color: #505565;">Только до Окинавы не доедет</p>
-                    <div style="margin-top: 1rem; font-weight: 600; font-size: 0.95rem; color: #1a1a2e;">Токио • Хиросима • Осака • Киото • Ф1 • Токио • Шанхай →</div>
+            <a href="western-japan.html" class="group-link">
+                <div class="info-card group-card">
+                    <div class="info-icon"></div>
+                    <h3 class="info-title">Егор</h3>
+                    <p class="info-text">Только до Окинавы не доедет</p>
+                    <div class="info-route">Токио • Хиросима • Осака • Киото • Ф1 • Токио • Шанхай →</div>
                 </div>
             </a>
         </div>

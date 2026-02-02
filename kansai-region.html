@@ -224,7 +224,7 @@
         .timeline-node:nth-child(odd) .node-content::after {
             content: '';
             position: absolute;
-            top: 20px;
+            top: 30px;
             right: -40px;
             border-width: 15px 0 15px 40px;
             border-style: solid;
@@ -234,7 +234,7 @@
         .timeline-node:nth-child(even) .node-content::after {
             content: '';
             position: absolute;
-            top: 20px;
+            top: 30px;
             left: -40px;
             border-width: 15px 40px 15px 0;
             border-style: solid;
@@ -273,6 +273,85 @@
             filter: drop-shadow(0 0 10px var(--accent-glow));
         }
 
+        .expand-btn {
+            margin-top: 1rem;
+            padding: 9px 18px;
+            background: rgba(240, 147, 251, 0.2);
+            border: 1px solid rgba(240, 147, 251, 0.4);
+            border-radius: 22px;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .expand-btn:hover {
+            background: rgba(240, 147, 251, 0.35);
+            transform: translateY(-2px);
+        }
+
+        /* --- Detailed Schedule --- */
+        .detail-schedule {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1.5rem;
+        }
+
+        .schedule-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(240, 147, 251, 0.2);
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .schedule-time {
+            flex-shrink: 0;
+            width: 115px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.95);
+            background: rgba(240, 147, 251, 0.2);
+            padding: 5px 10px;
+            border-radius: 8px;
+            text-align: center;
+            height: fit-content;
+        }
+
+        .schedule-content {
+            flex: 1;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--text-primary);
+            opacity: 0.96;
+        }
+
+        .schedule-content strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: #fff;
+            font-size: 1.05rem;
+        }
+
+        .placeholder-hint {
+            padding: 1.5rem;
+            margin-top: 1rem;
+            background: rgba(245, 87, 108, 0.1);
+            border-left: 4px solid #f5576c;
+            border-radius: 8px;
+            color: #fff;
+            font-style: italic;
+        }
+
         /* Navigation */
         .nav-controls {
             position: fixed;
@@ -280,6 +359,7 @@
             right: 2rem;
             z-index: 100;
             display: flex;
+            flex-direction: column;
             gap: 1rem;
         }
 
@@ -323,7 +403,7 @@
             .timeline-node:nth-child(odd) .node-content::after,
             .timeline-node:nth-child(even) .node-content::after {
                 left: -20px;
-                top: 20px;
+                top: 30px;
                 border-width: 15px 20px 15px 0;
                 border-color: transparent var(--card-bg) transparent transparent;
             }
@@ -348,107 +428,282 @@
     <div class="train-overlay"></div>
 
     <header>
-        <div class="mission-status">Phase 2: Cultural Immersion</div>
-        <h1>Kansai Expedition</h1>
-        <p style="color: var(--text-secondary);">Группа 2 • Таймлайн: 6-12 день</p>
+        <div class="mission-status">Group B Journey</div>
+        <h1>Kansai Cultural Immersion</h1>
+        <p style="color: var(--text-secondary);">Группа B • Таймлайн: 23–28 марта 2026</p>
     </header>
 
     <div class="timeline-container">
-        
-        <!-- Arrival: Kyoto -->
-        <div class="timeline-node">
+
+        <!-- Day 1: Arrival Osaka -->
+        <div class="timeline-node" onclick="toggleDetails(this)">
             <div class="node-point start"></div>
             <div class="node-content">
-                <div class="location-icon"></div>
-                <span class="time-badge">День 6 • 11:00</span>
-                <h3 class="location-title">Прибытие: Киото (Shinkansen)</h3>
+                <div class="location-icon">✈️</div>
+                <span class="time-badge">День 1 • 23 марта • понедельник</span>
+                <h3 class="location-title">Прибытие в Осаку (KIX)</h3>
                 <p class="location-desc">
-                    Прибытие на станцию Киото. Трансфер в отель в районе Гион. Ориентация на местности. Первый контакт с традиционной архитектурой. Вечерняя прогулка по Понтотё.
+                    Посадка в аэропорту Кансай в 13:20 → Трансфер в Киото → Заселение в отель
                 </p>
+                <button class="expand-btn">Подробнее ↓</button>
+
+                <div class="detail-schedule">
+                    <div class="schedule-item">
+                        <div class="schedule-time">13:20</div>
+                        <div class="schedule-content">
+                            <strong>Посадка в аэропорту Кансай (KIX)</strong>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">13:40-14:20</div>
+                        <div class="schedule-content">
+                            <strong>Паспортный контроль, получение багажа</strong>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">14:30-16:15</div>
+                        <div class="schedule-content">
+                            <strong>Трансфер в Киото</strong><br>
+                            JR Haruka Express (аэропорт Кансай → станция Киото, ~75 мин, ~3 600 ¥)
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">16:30-17:00</div>
+                        <div class="schedule-content">
+                            <strong>Заселение в отель</strong><br>
+                            Районы: Gion, Kawaramachi или Higashiyama
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">17:30-19:00</div>
+                        <div class="schedule-content">
+                            <strong>Первое знакомство: Район Гион</strong><br>
+                            Hanamikoji Street, Shirakawa Canal<br>
+                            Шанс увидеть гейшу или майко
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">19:30-21:00</div>
+                        <div class="schedule-content">
+                            <strong>Ужин в Гионе</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Day 1: Kyoto Temples -->
-        <div class="timeline-node">
+        <!-- Day 2: Kyoto Day 1 -->
+        <div class="timeline-node" onclick="toggleDetails(this)">
             <div class="node-point"></div>
             <div class="node-content">
-                <div class="location-icon"></div>
-                <span class="time-badge">День 7 • 08:00 - 18:00</span>
-                <h3 class="location-title">Kyoto: Храмовый маршрут</h3>
+                <div class="location-icon">⛩️</div>
+                <span class="time-badge">День 2 • 24 марта • вторник ⭐</span>
+                <h3 class="location-title">Нестандартный день • ВСТРЕЧА С ГРУППОЙ A</h3>
                 <p class="location-desc">
-                    <strong>08:00:</strong> Кинкакудзи (Золотой павильон) — анализ рефлексии в пруду.<br>
-                    <strong>11:00:</strong> Рёандзи — дзен-сад камней (медитация 15 мин).<br>
-                    <strong>14:00:</strong> Арасияма — бамбуковая роща + храм Тэнрюдзи.<br>
-                    <strong>17:00:</strong> Гион — наблюдение за гейшами на закате.
+                    Kurama & Kibune (горные деревни к северу) → Совместный кайсэки-ужин с группой A в Гионе
                 </p>
+                <button class="expand-btn">Подробнее ↓</button>
+
+                <div class="detail-schedule">
+                    <div class="schedule-item">
+                        <div class="schedule-time">10:00-11:00</div>
+                        <div class="schedule-content">
+                            <strong>Трансфер в Kurama & Kibune</strong><br>
+                            Горные деревни к северу, ~1 час
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">11:30-17:00</div>
+                        <div class="schedule-content">
+                            <strong>Программа:</strong><br>
+                            • Канатная дорога (ropeway) на высоту<br>
+                            • Kibune Shrine (святилище воды в лесу)<br>
+                            • Hiking trail через лес с водопадами и горячими источниками<br>
+                            • Kaiseki или нюкумэн в горячих источниках на берегу реки
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">18:00-19:30</div>
+                        <div class="schedule-content">
+                            <strong>Возврат в центр Киото</strong>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">20:00-22:00</div>
+                        <div class="schedule-content">
+                            <strong>🤝 СОВМЕСТНЫЙ КАЙСЭКИ-УЖИН С ГРУППОЙ A В ГИОНЕ</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Day 2: Fushimi Inari -->
-        <div class="timeline-node">
+        <!-- Day 3: Kyoto Day 2 -->
+        <div class="timeline-node" onclick="toggleDetails(this)">
             <div class="node-point"></div>
             <div class="node-content">
-                <div class="location-icon"></div>
-                <span class="time-badge">День 8 • 06:30 - 16:00</span>
-                <h3 class="location-title">Фусими Инари: 10,000 Torii</h3>
+                <div class="location-icon">🌸</div>
+                <span class="time-badge">День 3 • 25 марта • среда ⭐</span>
+                <h3 class="location-title">Альтернативная культура Киота • ВЕСЬ ДЕНЬ С ГРУППОЙ A</h3>
                 <p class="location-desc">
-                    Ранний подъём для минимизации туристического потока. Восхождение по тропе красных тории (2-3 часа). Статистический анализ плотности посетителей. Обед в Нисики Итиба (рынок). Вечер: Гинкакудзи + Философская тропа.
+                    Nanzenji Temple → Philosopher's Path → Eikandō Temple → Ginkakuji на закате
                 </p>
+                <button class="expand-btn">Подробнее ↓</button>
+
+                <div class="detail-schedule">
+                    <div class="schedule-item">
+                        <div class="schedule-time">09:00-11:00</div>
+                        <div class="schedule-content">
+                            <strong>Nanzenji Temple (南禅寺)</strong><br>
+                            Древний храм с сухим садом + акведук<br>
+                            Менее туристический, чем Ryoanji
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">11:30-14:00</div>
+                        <div class="schedule-content">
+                            <strong>Philosopher's Path (哲学の道)</strong><br>
+                            2 км прогулки вдоль канала<br>
+                            Вишнёвые деревья, маленькие храмы, кафе, дизайнерские лавки
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">14:00-15:00</div>
+                        <div class="schedule-content">
+                            <strong>Обед</strong>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">15:30-17:00</div>
+                        <div class="schedule-content">
+                            <strong>Eikandō Temple (永観堂) + Konchi-in</strong><br>
+                            Храм с парком, статуя Будды, виды на Киото<br>
+                            Nanzenji Subtemple — красивый сухой сад
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">17:30-19:00</div>
+                        <div class="schedule-content">
+                            <strong>Ginkakuji (銀閣寺 Silver Pavilion) на закате</strong><br>
+                            Менее известен, чем Kinkakuji, но атмосфернее<br>
+                            Прогулка по соседним улочкам
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">19:30-21:00</div>
+                        <div class="schedule-content">
+                            <strong>Ужин</strong>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">10:00-19:00</div>
+                        <div class="schedule-content">
+                            <strong>🤝 ВЕСЬ ДЕНЬ С ГРУППОЙ A</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Day 3: Nara Excursion -->
-        <div class="timeline-node">
+        <!-- Day 4: Kyoto Day 3 -->
+        <div class="timeline-node" onclick="toggleDetails(this)">
             <div class="node-point"></div>
             <div class="node-content">
-                <div class="location-icon"></div>
-                <span class="time-badge">День 9 • 09:00 - 17:00</span>
-                <h3 class="location-title">Нара: Однодневная миссия</h3>
+                <div class="location-icon">🍶</div>
+                <span class="time-badge">День 4 • 26 марта • четверг ⭐</span>
+                <h3 class="location-title">Нестандартные активности • ВЕСЬ ДЕНЬ С ГРУППОЙ A</h3>
                 <p class="location-desc">
-                    JR Nara Line (45 минут). Парк Нары — взаимодействие с оленями (протокол безопасности: не кормить руками). Тодайдзи — 15м бронзовый Будда. Касуга Тайся — 3000 каменных фонарей. Возврат в Киото к вечеру.
+                    Fushimi Sake District → Daigo-ji Temple / Byodoin Temple → Uji Tea Experience
                 </p>
+                <button class="expand-btn">Подробнее ↓</button>
+
+                <div class="detail-schedule">
+                    <div class="schedule-item">
+                        <div class="schedule-time">09:00-12:00</div>
+                        <div class="schedule-content">
+                            <strong>Fushimi Sake District (伏見酒造)</strong><br>
+                            Район пивоварен саке к югу от Киото<br>
+                            Дегустация саке, традиционные пивоварни, музей
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">13:00-14:00</div>
+                        <div class="schedule-content">
+                            <strong>Обед</strong>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">14:30-17:00</div>
+                        <div class="schedule-content">
+                            <strong>На выбор:</strong><br>
+                            <strong>А:</strong> Daigo-ji Temple (醍醐寺) — пятиэтажная пагода в горах (парк слив, весна)<br>
+                            <strong>Б:</strong> Byodoin Temple (平等院) в Uji — архитектура XI века, отражение в пруду
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">17:30-19:00</div>
+                        <div class="schedule-content">
+                            <strong>Uji Tea Experience (宇治茶)</strong><br>
+                            Чайная церемония<br>
+                            Дегустация матча<br>
+                            Традиционное печенье
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">19:30-21:00</div>
+                        <div class="schedule-content">
+                            <strong>Ужин</strong>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">09:00-19:00</div>
+                        <div class="schedule-content">
+                            <strong>🤝 ВЕСЬ ДЕНЬ С ГРУППОЙ A</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Transition: Kyoto → Osaka -->
-        <div class="timeline-node">
+        <!-- Day 5: Kyoto → Osaka -->
+        <div class="timeline-node" onclick="toggleDetails(this)">
             <div class="node-point"></div>
             <div class="node-content">
-                <div class="location-icon"></div>
-                <span class="time-badge">День 10 • 10:00</span>
-                <h3 class="location-title">Передислокация: Осака</h3>
+                <div class="location-icon">🏯</div>
+                <span class="time-badge">День 5 • 27 марта • пятница</span>
+                <h3 class="location-title">Киото → Осака</h3>
                 <p class="location-desc">
-                    Check-out из Киото. JR Special Rapid до Осаки (30 минут). Заселение в отель Нанба/Синсайбаси. Дневная рекогносцировка квартала Дотонбори. Дегустация такояки и окономияки. Ночная съёмка неоновых вывесок.
+                    Checkout → Поезд в Осаку (30 мин) → Замок Осака → Обед → Район Дотонбори (неоновые вывески) → Уличная еда: такояки, окономияки → Ночной шопинг в Namba
                 </p>
+                <button class="expand-btn">Подробнее ↓</button>
+
+                <div class="detail-schedule">
+                    <div class="placeholder-hint">
+                        ✏️ Это расписание можно детализировать позже.<br>
+                        Добавьте точные времена поездки, заселения, посещения достопримечательностей и ужина.
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Day 1: Osaka Castle & Food -->
-        <div class="timeline-node">
-            <div class="node-point"></div>
-            <div class="node-content">
-                <div class="location-icon"></div>
-                <span class="time-badge">День 11 • 09:00 - 20:00</span>
-                <h3 class="location-title">Осака: Замок и гастрономия</h3>
-                <p class="location-desc">
-                    <strong>Утро:</strong> Замок Осаки — исторический анализ.<br>
-                    <strong>Обед:</strong> Курукамон (рынок морепродуктов) — кушикацу.<br>
-                    <strong>День:</strong> Умэда Sky Building — панорамный вид.<br>
-                    <strong>Вечер:</strong> Американа — ночная жизнь, наблюдение за локальной культурой.
-                </p>
-            </div>
-        </div>
-
-        <!-- Departure -->
-        <div class="timeline-node">
+        <!-- Day 6: Departure -->
+        <div class="timeline-node" onclick="toggleDetails(this)">
             <div class="node-point end"></div>
             <div class="node-content">
-                <div class="location-icon"></div>
-                <span class="time-badge">День 12 • 14:00</span>
-                <h3 class="location-title">Отправление: Хиросима</h3>
+                <div class="location-icon">🛫</div>
+                <span class="time-badge">День 6 • 28 марта • суббота</span>
+                <h3 class="location-title">Вылет домой</h3>
                 <p class="location-desc">
-                    Станция Shin-Osaka. Синкансэн Токайдо-Санъё до Хиросимы (1.5 часа, JR Pass). Группа переходит в Phase 3: Western Japan. <strong>Конец фазы Кансай.</strong>
+                    Последнее утро в Осаке → Финальный шопинг или Kuromon Market → Трансфер в аэропорт Кансай → Вылет
                 </p>
+                <button class="expand-btn">Подробнее ↓</button>
+
+                <div class="detail-schedule">
+                    <div class="placeholder-hint">
+                        ✏️ Это расписание можно детализировать позже.<br>
+                        Добавьте точные времена завтрака, шопинга, checkout, трансфера и вылета.
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -473,6 +728,20 @@
         document.querySelectorAll('.timeline-node').forEach((node) => {
             observer.observe(node);
         });
+
+        // Toggle detailed schedule
+        function toggleDetails(element) {
+            const detailSchedule = element.querySelector('.detail-schedule');
+            const expandBtn = element.querySelector('.expand-btn');
+
+            if (detailSchedule.style.maxHeight) {
+                detailSchedule.style.maxHeight = null;
+                expandBtn.textContent = 'Подробнее ↓';
+            } else {
+                detailSchedule.style.maxHeight = detailSchedule.scrollHeight + 'px';
+                expandBtn.textContent = 'Свернуть ↑';
+            }
+        }
     </script>
 </body>
 </html>

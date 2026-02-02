@@ -5,32 +5,275 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Токио — что посмотреть | Japan Journey 2026</title>
     <style>
-        :root { --color-bg: #667eea; --color-text: #fff; --color-text-light: rgba(255,255,255,0.9); --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; --shadow: 0 10px 30px rgba(0,0,0,0.12); --radius-md: 24px; --radius-sm: 16px; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-main); background: var(--color-bg); color: var(--color-text); line-height: 1.7; }
-        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-        .back-link { display: inline-block; margin-bottom: 2rem; color: #fff; text-decoration: none; font-weight: 600; }
-        .back-link:hover { text-decoration: underline; }
-        h1 { font-size: 2rem; margin-bottom: 1.5rem; color: #fff; }
-        .sight { background: rgba(255,255,255,0.12); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.15); }
-        .sight h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff; }
-        .sight .meta { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0.75rem; }
-        .sight p { color: var(--color-text-light); font-size: 1rem; }
-        .sight-photo { margin-top: 1rem; }
-        .sight-photo-img { width: 100%; max-height: 240px; object-fit: cover; border-radius: var(--radius-sm); display: block; margin-bottom: 0.5rem; }
-        .sight-actions { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
-        .btn { display: inline-block; padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; font-family: inherit; }
-        .btn-maps { background: rgba(255,255,255,0.25); color: #fff; }
-        .btn-maps:hover { background: rgba(255,255,255,0.35); }
-        .carousel { position: relative; overflow: hidden; margin-bottom: 1rem; border-radius: var(--radius-md); }
-        .carousel-track { display: flex; transition: transform 0.35s ease-out; }
-        .carousel-slide { min-width: 100%; flex-shrink: 0; padding: 0 0.25rem; }
-        .carousel .sight { margin-bottom: 0; }
-        .carousel-nav { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
-        .carousel-prev, .carousel-next { padding: 0.6rem 1.2rem; border-radius: var(--radius-sm); font-size: 1rem; font-weight: 600; cursor: pointer; border: none; background: rgba(255,255,255,0.25); color: #fff; font-family: inherit; }
-        .carousel-prev:hover, .carousel-next:hover { background: rgba(255,255,255,0.4); }
-        .carousel-prev:disabled, .carousel-next:disabled { opacity: 0.5; cursor: not-allowed; }
-    </style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+        /* Colors */
+        --color-bg: #667eea;
+        --color-text: #fff;
+        --color-text-light: rgba(255,255,255,0.9);
+        --color-text-muted: rgba(255,255,255,0.7);
+        
+        /* Typography */
+        --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        
+        /* Effects */
+        --shadow: 0 10px 30px rgba(0,0,0,0.12);
+        --shadow-lg: 0 15px 40px rgba(0,0,0,0.15);
+        --radius-md: 24px;
+        --radius-sm: 16px;
+        
+        /* Spacing */
+        --space-xs: 0.5rem;
+        --space-sm: 0.75rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+    }
+
+    /* ===== BASE RESET ===== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: var(--font-main);
+        background: var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.7;
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+        max-width: 1200px; /* Увеличил для grid */
+        margin: 0 auto;
+        padding: var(--space-xl);
+    }
+
+    /* ===== NAVIGATION ===== */
+    .back-link {
+        display: inline-block;
+        margin-bottom: var(--space-xl);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: opacity 0.2s;
+    }
+
+    .back-link:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 {
+        font-size: 2rem;
+        margin-bottom: var(--space-lg);
+        color: #fff;
+        text-align: center;
+    }
+
+    /* ===== SIGHTS GRID (НОВОЕ!) ===== */
+    .sights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: var(--space-lg);
+        margin-bottom: var(--space-xl);
+    }
+
+    /* ===== SIGHT CARD (УЛУЧШЕННОЕ!) ===== */
+    .sight {
+        background: rgba(255,255,255,0.12);
+        border-radius: var(--radius-md);
+        padding: 0; /* Убрали padding - теперь внутри структура */
+        border: 1px solid rgba(255,255,255,0.15);
+        overflow: hidden; /* ВАЖНО для border-radius на изображениях */
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* КРИТИЧНО - равная высота карточек */
+        transition: all 0.3s ease;
+    }
+
+    .sight:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: rgba(255,255,255,0.3);
+    }
+
+    /* ===== IMAGE WRAPPER (НОВОЕ!) ===== */
+    .sight-photo {
+        position: relative;
+        width: 100%;
+        padding-top: 60%; /* 5:3 aspect ratio */
+        overflow: hidden;
+        background: rgba(0,0,0,0.2);
+        margin: 0; /* Убрали margin-top */
+    }
+
+    .sight-photo-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* КРИТИЧНО - обрезает изображение */
+        object-position: center;
+        display: block;
+        margin: 0; /* Убрали margin-bottom */
+    }
+
+    /* Placeholder если нет изображения */
+    .sight-photo-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, 
+            rgba(255,255,255,0.15), 
+            rgba(255,255,255,0.05));
+        font-size: 3rem;
+    }
+
+    /* ===== CONTENT AREA (НОВОЕ!) ===== */
+    .sight-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1; /* Занимает оставшееся пространство */
+        padding: var(--space-lg);
+    }
+
+    .sight h3 {
+        font-size: 1.25rem;
+        margin-bottom: var(--space-xs);
+        color: #fff;
+    }
+
+    .sight .meta {
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+        margin-bottom: var(--space-sm);
+    }
+
+    .sight p {
+        color: var(--color-text-light);
+        font-size: 1rem;
+        margin-bottom: var(--space-md);
+        flex: 1; /* Растягивается, чтобы кнопки были внизу */
+    }
+
+    /* ===== ACTIONS (УЛУЧШЕННОЕ!) ===== */
+    .sight-actions {
+        margin-top: auto; /* КРИТИЧНО - прижимает к низу */
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-xs);
+        align-items: center;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+        transition: all 0.2s ease;
+    }
+
+    .btn-maps {
+        background: rgba(255,255,255,0.25);
+        color: #fff;
+    }
+
+    .btn-maps:hover {
+        background: rgba(255,255,255,0.35);
+        transform: scale(1.02);
+    }
+
+    /* ===== CAROUSEL (СОХРАНЕНО) ===== */
+    .carousel {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: var(--space-md);
+        border-radius: var(--radius-md);
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 0.35s ease-out;
+    }
+
+    .carousel-slide {
+        min-width: 100%;
+        flex-shrink: 0;
+        padding: 0 0.25rem;
+    }
+
+    .carousel .sight {
+        margin-bottom: 0;
+    }
+
+    .carousel-nav {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-md);
+        margin-top: var(--space-md);
+    }
+
+    .carousel-prev,
+    .carousel-next {
+        padding: 0.6rem 1.2rem;
+        border-radius: var(--radius-sm);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        background: rgba(255,255,255,0.25);
+        color: #fff;
+        font-family: inherit;
+        transition: all 0.2s ease;
+    }
+
+    .carousel-prev:hover,
+    .carousel-next:hover {
+        background: rgba(255,255,255,0.4);
+    }
+
+    .carousel-prev:disabled,
+    .carousel-next:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+        .container {
+            padding: var(--space-md);
+        }
+
+        .sights-grid {
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        .sight-photo {
+            padding-top: 56.25%; /* 16:9 для мобильных */
+        }
+    }
+</style>
+
 </head>
 <body>
     <div class="container">

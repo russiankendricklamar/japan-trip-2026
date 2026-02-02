@@ -6,19 +6,19 @@
     <title>Western Japan Journey | Japan 2026</title>
     <style>
         :root {
-            --bg-color: #1a0f0a;
-            --card-bg: rgba(70, 35, 20, 0.7);
-            --accent-color: #f97316;
-            --accent-glow: rgba(249, 115, 22, 0.5);
-            --secondary-color: #ef4444;
+            --bg-color: #2a1820;
+            --card-bg: rgba(70, 50, 60, 0.7);
+            --accent-color: #ffb7d5;
+            --accent-glow: rgba(255, 183, 213, 0.5);
+            --secondary-color: #ff8fbb;
             --text-primary: #f1f5f9;
-            --text-secondary: #d6c5b5;
-            --line-color: #5e3a2a;
+            --text-secondary: #f5d5e5;
+            --line-color: #5e4a52;
             --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #1a0f0a 0%, #2d1b1a 50%, #1a0f0a 100%);
+            background: linear-gradient(135deg, #2a1820 0%, #3d2530 50%, #2a1820 100%);
             color: var(--text-primary);
             font-family: var(--font-main);
             margin: 0;
@@ -186,7 +186,7 @@
         
         .node-point.end { 
             border-color: var(--secondary-color); 
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+            box-shadow: 0 0 20px rgba(255, 143, 187, 0.6);
             width: 30px;
             height: 30px;
         }
@@ -197,7 +197,7 @@
             backdrop-filter: blur(15px);
             padding: 2rem;
             border-radius: 20px;
-            border: 1px solid rgba(249, 115, 22, 0.3);
+            border: 1px solid rgba(255, 183, 213, 0.3);
             position: relative;
             z-index: 6;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
@@ -206,7 +206,7 @@
 
         .node-content:hover {
             transform: scale(1.03);
-            box-shadow: 0 15px 50px rgba(249, 115, 22, 0.3);
+            box-shadow: 0 15px 50px rgba(255, 183, 213, 0.3);
         }
 
         .timeline-node:nth-child(odd) .node-content {
@@ -250,7 +250,7 @@
             font-weight: bold;
             font-size: 0.8rem;
             margin-bottom: 0.8rem;
-            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 183, 213, 0.4);
         }
 
         .location-title {
@@ -258,7 +258,7 @@
             font-weight: 700;
             margin: 0.8rem 0;
             color: #fff;
-            text-shadow: 0 2px 10px rgba(249, 115, 22, 0.3);
+            text-shadow: 0 2px 10px rgba(255, 183, 213, 0.3);
         }
 
         .location-desc {
@@ -270,8 +270,8 @@
         .expand-btn {
             margin-top: 1rem;
             padding: 9px 18px;
-            background: rgba(249, 115, 22, 0.2);
-            border: 1px solid rgba(249, 115, 22, 0.4);
+            background: rgba(255, 183, 213, 0.2);
+            border: 1px solid rgba(255, 183, 213, 0.4);
             border-radius: 22px;
             color: #fff;
             font-size: 0.9rem;
@@ -282,7 +282,7 @@
         }
 
         .expand-btn:hover {
-            background: rgba(249, 115, 22, 0.35);
+            background: rgba(255, 183, 213, 0.35);
             transform: translateY(-2px);
         }
 
@@ -299,7 +299,7 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(249, 115, 22, 0.2);
+            border-bottom: 1px solid rgba(255, 183, 213, 0.2);
         }
 
         .schedule-item:last-child {
@@ -314,7 +314,7 @@
             font-weight: 700;
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.95);
-            background: rgba(249, 115, 22, 0.2);
+            background: rgba(255, 183, 213, 0.2);
             padding: 5px 10px;
             border-radius: 8px;
             text-align: center;
@@ -339,8 +339,8 @@
         .placeholder-hint {
             padding: 1.5rem;
             margin-top: 1rem;
-            background: rgba(239, 68, 68, 0.1);
-            border-left: 4px solid #ef4444;
+            background: rgba(255, 143, 187, 0.1);
+            border-left: 4px solid #ff8fbb;
             border-radius: 8px;
             color: #fff;
             font-style: italic;
@@ -358,7 +358,7 @@
         }
 
         .btn-back {
-            background: rgba(249, 115, 22, 0.2);
+            background: rgba(255, 183, 213, 0.2);
             backdrop-filter: blur(10px);
             color: white;
             text-decoration: none;
@@ -413,24 +413,6 @@
     </div>
     <div class="train-overlay"></div>
 
-    <header>
-        <div class="mission-status">Третий маршрут</div>
-        <h1>Сквозь всю Японию (ну почти)</h1>
-        <p style="color: var(--text-secondary);">Егор • Таймлайн: 13 марта – 4 апреля</p>
-    </header>
-
-</head>
-<body>
-
-    <!-- Animation Layer -->
-    <div class="flight-overlay">
-        <svg class="flight-path" viewBox="0 0 1000 200" preserveAspectRatio="none">
-            <path d="M -100 50 Q 400 300 1200 100" fill="transparent" />
-        </svg>
-        <div class="plane-icon" style="offset-path: path('M -100 50 Q 400 300 1200 100');"></div>
-    </div>
-
-    <!-- Header -->
     <header>
         <div class="mission-status">Третий маршрут</div>
         <h1>Сквозь всю Японию (ну почти)</h1>

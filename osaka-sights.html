@@ -5,34 +5,448 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Осака — что посмотреть | Japan Journey 2026</title>
     <style>
-        :root { --color-bg: #ea580c; --color-text: #fff; --color-text-light: rgba(255,255,255,0.9); --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; --radius-md: 24px; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font-main); background: var(--color-bg); color: var(--color-text); line-height: 1.7; }
-        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-        .back-link { display: inline-block; margin-bottom: 2rem; color: #fff; text-decoration: none; font-weight: 600; }
-        .back-link:hover { text-decoration: underline; }
-        h1 { font-size: 2rem; margin-bottom: 1.5rem; color: #fff; }
-        .sight { background: rgba(255,255,255,0.12); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.15); }
-        .sight h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: #fff; }
-        .sight .meta { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin-bottom: 0.75rem; }
-        .sight p { color: var(--color-text-light); font-size: 1rem; }
-        .sight-photo { margin-top: 1rem; }
-        .sight-photo-img { width: 100%; max-height: 240px; object-fit: cover; border-radius: 12px; display: block; margin-bottom: 0.5rem; }
-        .sight-actions { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
-        .btn { display: inline-block; padding: 0.5rem 1rem; border-radius: 12px; font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; border: none; font-family: inherit; }
-        .btn-maps { background: rgba(255,255,255,0.25); color: #fff; }
-        .btn-maps:hover { background: rgba(255,255,255,0.35); }
-        .carousel { position: relative; overflow: hidden; margin-bottom: 1rem; border-radius: var(--radius-md); }
-        .carousel-track { display: flex; transition: transform 0.35s ease-out; }
-        .carousel-slide { min-width: 100%; flex-shrink: 0; padding: 0 0.25rem; }
-        .carousel .sight { margin-bottom: 0; }
-        .carousel-nav { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
-        .carousel-prev, .carousel-next { padding: 0.6rem 1.2rem; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; background: rgba(255,255,255,0.25); color: #fff; font-family: inherit; }
-        .carousel-prev:hover, .carousel-next:hover { background: rgba(255,255,255,0.4); }
-        .carousel-prev:disabled, .carousel-next:disabled { opacity: 0.5; cursor: not-allowed; }
-    </style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+        /* Muted Colors - Terracotta/Brown-Orange */
+        --color-bg: #8a6a5a;
+        --color-bg-gradient: linear-gradient(135deg, #8a6a5a 0%, #9b7a6a 50%, #8a6a5a 100%);
+        --color-accent: #b5998a;
+        --color-accent-glow: rgba(181, 153, 138, 0.4);
+        --color-text: #f8f9fa;
+        --color-text-light: rgba(255,255,255,0.92);
+        --color-text-muted: rgba(255,255,255,0.7);
+
+        /* Typography */
+        --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+        /* Effects */
+        --shadow: 0 10px 30px rgba(0,0,0,0.2);
+        --shadow-lg: 0 15px 40px rgba(0,0,0,0.25);
+        --radius-md: 20px;
+        --radius-sm: 12px;
+
+        /* Spacing */
+        --space-xs: 0.5rem;
+        --space-sm: 0.75rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+    }
+
+    /* ===== BASE RESET ===== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: var(--font-main);
+        background: var(--color-bg-gradient);
+        color: var(--color-text);
+        line-height: 1.7;
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+
+    /* ===== ANIMATED BACKGROUND PARTICLES ===== */
+    .bg-particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--color-accent);
+        border-radius: 50%;
+        opacity: 0.3;
+        animation: float 15s infinite ease-in-out;
+    }
+
+    .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 30%; animation-delay: 2s; }
+    .particle:nth-child(3) { left: 50%; animation-delay: 4s; }
+    .particle:nth-child(4) { left: 70%; animation-delay: 6s; }
+    .particle:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(100vh) scale(1); opacity: 0; }
+        10% { opacity: 0.3; }
+        50% { transform: translateY(50vh) scale(1.5); opacity: 0.5; }
+        90% { opacity: 0.3; }
+    }
+
+    /* ===== TRAIN ANIMATION ===== */
+    .train-overlay {
+        position: fixed;
+        top: 50%;
+        left: -100%;
+        width: 200px;
+        height: 80px;
+        background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+        z-index: 1;
+        animation: trainPass 12s linear infinite;
+        opacity: 0.25;
+        filter: blur(20px);
+    }
+
+    @keyframes trainPass {
+        0% { left: -200px; }
+        100% { left: calc(100% + 200px); }
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+        position: relative;
+        z-index: 10;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--space-xl);
+    }
+
+    /* ===== NAVIGATION ===== */
+    .back-link {
+        display: inline-block;
+        margin-bottom: var(--space-xl);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        background: rgba(255,255,255,0.1);
+        padding: 0.6rem 1.2rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(255,255,255,0.2);
+        transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+        background: rgba(255,255,255,0.2);
+        transform: translateX(-4px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: var(--space-xl);
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ===== SIGHTS GRID ===== */
+    .sights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: var(--space-lg);
+        margin-bottom: var(--space-xl);
+    }
+
+    /* ===== SIGHT CARD ===== */
+    .sight {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius-md);
+        padding: 0;
+        border: 1px solid rgba(255,255,255,0.15);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .sight.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .sight:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        border-color: var(--color-accent);
+    }
+
+    /* ===== IMAGE WRAPPER ===== */
+    .sight-photo {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 */
+        overflow: hidden;
+        background: rgba(0,0,0,0.2);
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .sight-photo-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
+    .sight-photo-placeholder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg,
+            rgba(255,255,255,0.15),
+            rgba(255,255,255,0.05));
+        font-size: 3rem;
+    }
+
+    /* ===== CONTENT AREA ===== */
+    .sight-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: var(--space-lg);
+    }
+
+    .sight h3 {
+        font-size: 1.25rem;
+        margin-bottom: var(--space-xs);
+        color: #fff;
+    }
+
+    .sight .meta {
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+        margin-bottom: var(--space-sm);
+    }
+
+    .sight p {
+        color: var(--color-text-light);
+        font-size: 1rem;
+        margin-bottom: var(--space-md);
+        flex: 1;
+    }
+
+    /* ===== ACTIONS ===== */
+    .sight-actions {
+        margin-top: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-xs);
+        align-items: center;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+        transition: all 0.2s ease;
+    }
+
+    .btn-maps {
+        background: rgba(255,255,255,0.25);
+        color: #fff;
+    }
+
+    .btn-maps:hover {
+        background: rgba(255,255,255,0.35);
+        transform: scale(1.02);
+    }
+
+    /* ===== CAROUSEL ===== */
+    .carousel {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: var(--space-lg);
+        border-radius: var(--radius-md);
+        animation: fadeIn 0.8s ease-out 0.2s backwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .carousel-slide {
+        min-width: 100%;
+        flex-shrink: 0;
+        padding: 0 0.5rem;
+    }
+
+    .carousel .sight {
+        margin-bottom: 0;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .carousel-nav {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-md);
+        margin-top: var(--space-lg);
+    }
+
+    .carousel-prev,
+    .carousel-next {
+        padding: 0.7rem 1.5rem;
+        border-radius: var(--radius-sm);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+        color: #fff;
+        font-family: inherit;
+        transition: all 0.3s ease;
+    }
+
+    .carousel-prev:hover,
+    .carousel-next:hover {
+        background: rgba(255,255,255,0.25);
+        transform: scale(1.05);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .carousel-prev:disabled,
+    .carousel-next:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        transform: scale(1);
+    }
+
+    .carousel-counter {
+        text-align: center;
+        margin-top: var(--space-sm);
+        color: rgba(255,255,255,0.8);
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+        .container {
+            padding: 1.2rem;
+        }
+
+        .back-link {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .sights-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .sight-photo {
+            padding-top: 56.25%;
+        }
+
+        .sight-content {
+            padding: 1rem;
+        }
+
+        .sight h3 {
+            font-size: 1.1rem;
+        }
+
+        .sight .meta {
+            font-size: 0.85rem;
+        }
+
+        .sight p {
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            font-size: 0.85rem;
+            padding: 0.45rem 0.9rem;
+        }
+
+        .carousel-prev,
+        .carousel-next {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .carousel-slide {
+            padding: 0 0.25rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+        }
+
+        .sight-content {
+            padding: 0.9rem;
+        }
+
+        .carousel-nav {
+            gap: 0.8rem;
+        }
+    }
+</style>
+
 </head>
 <body>
+    <!-- Background Effects -->
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    <div class="train-overlay"></div>
+
     <div class="container">
         <a href="osaka.html" class="back-link">&larr; Назад к Осаке</a>
         <h1>Что посмотреть в Осаке</h1>
@@ -41,65 +455,79 @@
             <div class="carousel-track" id="carouselTrack">
                 <div class="carousel-slide">
         <div class="sight" data-sight-id="osaka-castle">
-            <h3>Замок Осаки</h3>
-            <p class="meta">Тюо, платный вход в главную башню</p>
-            <p>Символ Осаки, восстановленная крепость XVI века. Главная башня — музей с панорамным видом. Парк вокруг замка — популярное место для ханами (любования сакурой) весной.</p>
             <div class="sight-photo"><img class="sight-photo-img" src="images/osaka-castle.jpg" alt="Замок Осаки" onerror="this.src='images/placeholder.png'"></div>
-            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            <div class="sight-content">
+                <h3>Замок Осаки</h3>
+                <p class="meta">Тюо, платный вход в главную башню</p>
+                <p>Символ Осаки, восстановленная крепость XVI века. Главная башня — музей с панорамным видом. Парк вокруг замка — популярное место для ханами (любования сакурой) весной.</p>
+                <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            </div>
         </div>
                 </div>
                 <div class="carousel-slide">
         <div class="sight" data-sight-id="osaka-dotonbori">
-            <h3>Дотонбори</h3>
-            <p class="meta">Нанба</p>
-            <p>Канал с неоновыми вывесками, гигантскими рекламными фигурами (краб, гулька и др.) и уличной едой. Сердце ночной Осаки. Такояки, окономияки, рамен — всё в шаговой доступности. Лучше вечером.</p>
             <div class="sight-photo"><img class="sight-photo-img" src="images/osaka-dotonbori.jpg" alt="Дотонбори" onerror="this.src='images/placeholder.png'"></div>
-            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Dotonbori+Osaka+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            <div class="sight-content">
+                <h3>Дотонбори</h3>
+                <p class="meta">Нанба</p>
+                <p>Канал с неоновыми вывесками, гигантскими рекламными фигурами (краб, гулька и др.) и уличной едой. Сердце ночной Осаки. Такояки, окономияки, рамен — всё в шаговой доступности. Лучше вечером.</p>
+                <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Dotonbori+Osaka+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            </div>
         </div>
                 </div>
                 <div class="carousel-slide">
         <div class="sight" data-sight-id="osaka-umedasky">
-            <h3>Умэда Sky Building</h3>
-            <p class="meta">Кита, платный вход</p>
-            <p>Два небоскрёба, соединённые смотровой площадкой на высоте 170 м. Панорама города и залива. «Саду небес» на крыше — сад с видом. Рекомендуется на закате.</p>
             <div class="sight-photo"><img class="sight-photo-img" src="images/osaka-umedasky.jpg" alt="Умэда Sky Building" onerror="this.src='images/placeholder.png'"></div>
-            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Umeda+Sky+Building+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            <div class="sight-content">
+                <h3>Умэда Sky Building</h3>
+                <p class="meta">Кита, платный вход</p>
+                <p>Два небоскрёба, соединённые смотровой площадкой на высоте 170 м. Панорама города и залива. «Саду небес» на крыше — сад с видом. Рекомендуется на закате.</p>
+                <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Umeda+Sky+Building+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            </div>
         </div>
                 </div>
                 <div class="carousel-slide">
         <div class="sight" data-sight-id="osaka-shinsaibashi">
-            <h3>Синсайбаси</h3>
-            <p class="meta">Синсайбаси</p>
-            <p>Торговая улица под крышей, соединяющая Нанба и Дотонбори. Магазины, кафе, уличная еда. Атмосфера шумная и весёлая. Удобно совмещать с Дотонбори.</p>
             <div class="sight-photo"><img class="sight-photo-img" src="images/osaka-shinsaibashi.jpg" alt="Синсайбаси" onerror="this.src='images/placeholder.png'"></div>
-            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Shinsaibashi+Osaka+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            <div class="sight-content">
+                <h3>Синсайбаси</h3>
+                <p class="meta">Синсайбаси</p>
+                <p>Торговая улица под крышей, соединяющая Нанба и Дотонбори. Магазины, кафе, уличная еда. Атмосфера шумная и весёлая. Удобно совмещать с Дотонбори.</p>
+                <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Shinsaibashi+Osaka+Japan" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            </div>
         </div>
                 </div>
                 <div class="carousel-slide">
         <div class="sight" data-sight-id="osaka-kuromon">
-            <h3>Курумон Итиба (рынок)</h3>
-            <p class="meta">Нанба</p>
-            <p>Крытый рынок с морепродуктами, фруктами и готовой едой. Кушикацу (жареные на шпажках) — местный специалитет. Завтрак или обед в атмосфере рынка.</p>
             <div class="sight-photo"><img class="sight-photo-img" src="images/osaka-kuromon.jpg" alt="Курумон Итиба" onerror="this.src='images/placeholder.png'"></div>
-            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Kuromon+Market+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            <div class="sight-content">
+                <h3>Курумон Итиба (рынок)</h3>
+                <p class="meta">Нанба</p>
+                <p>Крытый рынок с морепродуктами, фруктами и готовой едой. Кушикацу (жареные на шпажках) — местный специалитет. Завтрак или обед в атмосфере рынка.</p>
+                <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Kuromon+Market+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            </div>
         </div>
                 </div>
                 <div class="carousel-slide">
         <div class="sight" data-sight-id="osaka-amerikamura">
-            <h3>Америкамура (Амэмура)</h3>
-            <p class="meta">Синсайбаси</p>
-            <p>Район молодёжной моды и уличной культуры. Магазины винтажной одежды, граффити, кафе. «Маленькая Америка» в центре Осаки. Ночная жизнь.</p>
             <div class="sight-photo"><img class="sight-photo-img" src="images/osaka-amerikamura.jpg" alt="Америкамура" onerror="this.src='images/placeholder.png'"></div>
-            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Amerikamura+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            <div class="sight-content">
+                <h3>Америкамура (Амэмура)</h3>
+                <p class="meta">Синсайбаси</p>
+                <p>Район молодёжной моды и уличной культуры. Магазины винтажной одежды, граффити, кафе. «Маленькая Америка» в центре Осаки. Ночная жизнь.</p>
+                <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Amerikamura+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            </div>
         </div>
                 </div>
                 <div class="carousel-slide">
         <div class="sight" data-sight-id="osaka-shitennoji">
-            <h3>Храм Ситэнно-дзи</h3>
-            <p class="meta">Тэннодзи</p>
-            <p>Один из старейших храмов Японии (VI век). Пятиярусная пагода и сад. Рядом парк и зоопарк Тэннодзи. Спокойная альтернатива шумному центру.</p>
             <div class="sight-photo"><img class="sight-photo-img" src="images/osaka-shitennoji.jpg" alt="Ситэнно-дзи" onerror="this.src='images/placeholder.png'"></div>
-            <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Shitenno-ji+Temple+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            <div class="sight-content">
+                <h3>Храм Ситэнно-дзи</h3>
+                <p class="meta">Тэннодзи</p>
+                <p>Один из старейших храмов Японии (VI век). Пятиярусная пагода и сад. Рядом парк и зоопарк Тэннодзи. Спокойная альтернатива шумному центру.</p>
+                <div class="sight-actions"><a href="https://www.google.com/maps/search/?api=1&query=Shitenno-ji+Temple+Osaka" class="btn btn-maps" target="_blank" rel="noopener">Открыть в Google Картах</a></div>
+            </div>
         </div>
                 </div>
             </div>
@@ -108,9 +536,10 @@
             <button type="button" class="carousel-prev" id="carouselPrev" aria-label="Назад">&larr; Назад</button>
             <button type="button" class="carousel-next" id="carouselNext" aria-label="Вперёд">Вперёд &rarr;</button>
         </div>
-        <p class="carousel-counter" id="carouselCounter" style="text-align:center;margin-top:0.5rem;color:rgba(255,255,255,0.8);font-size:0.9rem;"></p>
+        <p class="carousel-counter" id="carouselCounter"></p>
     </div>
     <script>
+        // Carousel functionality
         (function() {
             var track = document.getElementById('carouselTrack');
             var prev = document.getElementById('carouselPrev');
@@ -129,6 +558,26 @@
             if (prev) prev.addEventListener('click', function() { go(index - 1); });
             if (next) next.addEventListener('click', function() { go(index + 1); });
             go(0);
+        })();
+
+        // Scroll-triggered animations for sight cards
+        (function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observe all sight cards outside carousel
+            var sights = document.querySelectorAll('.sights-grid .sight');
+            sights.forEach(function(sight) {
+                observer.observe(sight);
+            });
         })();
     </script>
 </body>

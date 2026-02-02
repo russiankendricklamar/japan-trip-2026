@@ -7,21 +7,24 @@
     <style>
     /* ===== DESIGN TOKENS ===== */
     :root {
-        /* Colors */
-        --color-bg: #667eea;
-        --color-text: #fff;
-        --color-text-light: rgba(255,255,255,0.9);
+        /* Muted Colors */
+        --color-bg: #4a5a7a;
+        --color-bg-gradient: linear-gradient(135deg, #4a5a7a 0%, #5b6b8a 50%, #4a5a7a 100%);
+        --color-accent: #7a8eb5;
+        --color-accent-glow: rgba(122, 142, 181, 0.4);
+        --color-text: #f8f9fa;
+        --color-text-light: rgba(255,255,255,0.92);
         --color-text-muted: rgba(255,255,255,0.7);
-        
+
         /* Typography */
         --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-        
+
         /* Effects */
-        --shadow: 0 10px 30px rgba(0,0,0,0.12);
-        --shadow-lg: 0 15px 40px rgba(0,0,0,0.15);
-        --radius-md: 24px;
-        --radius-sm: 16px;
-        
+        --shadow: 0 10px 30px rgba(0,0,0,0.2);
+        --shadow-lg: 0 15px 40px rgba(0,0,0,0.25);
+        --radius-md: 20px;
+        --radius-sm: 12px;
+
         /* Spacing */
         --space-xs: 0.5rem;
         --space-sm: 0.75rem;
@@ -39,14 +42,72 @@
 
     body {
         font-family: var(--font-main);
-        background: var(--color-bg);
+        background: var(--color-bg-gradient);
         color: var(--color-text);
         line-height: 1.7;
+        overflow-x: hidden;
+        min-height: 100vh;
+    }
+
+    /* ===== ANIMATED BACKGROUND PARTICLES ===== */
+    .bg-particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--color-accent);
+        border-radius: 50%;
+        opacity: 0.3;
+        animation: float 15s infinite ease-in-out;
+    }
+
+    .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 30%; animation-delay: 2s; }
+    .particle:nth-child(3) { left: 50%; animation-delay: 4s; }
+    .particle:nth-child(4) { left: 70%; animation-delay: 6s; }
+    .particle:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(100vh) scale(1); opacity: 0; }
+        10% { opacity: 0.3; }
+        50% { transform: translateY(50vh) scale(1.5); opacity: 0.5; }
+        90% { opacity: 0.3; }
+    }
+
+    /* ===== TRAIN ANIMATION ===== */
+    .train-overlay {
+        position: fixed;
+        top: 50%;
+        left: -100%;
+        width: 200px;
+        height: 80px;
+        background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+        z-index: 1;
+        animation: trainPass 12s linear infinite;
+        opacity: 0.25;
+        filter: blur(20px);
+    }
+
+    @keyframes trainPass {
+        0% { left: -200px; }
+        100% { left: calc(100% + 200px); }
     }
 
     /* ===== LAYOUT ===== */
     .container {
-        max-width: 1200px; /* Увеличил для grid */
+        position: relative;
+        z-index: 10;
+        max-width: 1200px;
         margin: 0 auto;
         padding: var(--space-xl);
     }
@@ -58,20 +119,38 @@
         color: #fff;
         text-decoration: none;
         font-weight: 600;
-        transition: opacity 0.2s;
+        background: rgba(255,255,255,0.1);
+        padding: 0.6rem 1.2rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(255,255,255,0.2);
+        transition: all 0.3s ease;
     }
 
     .back-link:hover {
-        opacity: 0.8;
-        text-decoration: underline;
+        background: rgba(255,255,255,0.2);
+        transform: translateX(-4px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     /* ===== TYPOGRAPHY ===== */
     h1 {
-        font-size: 2rem;
-        margin-bottom: var(--space-lg);
+        font-size: 2.2rem;
+        margin-bottom: var(--space-xl);
         color: #fff;
         text-align: center;
+        text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     /* ===== SIGHTS GRID (НОВОЕ!) ===== */
@@ -84,21 +163,29 @@
 
     /* ===== SIGHT CARD (УЛУЧШЕННОЕ!) ===== */
     .sight {
-        background: rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
         border-radius: var(--radius-md);
-        padding: 0; /* Убрали padding - теперь внутри структура */
+        padding: 0;
         border: 1px solid rgba(255,255,255,0.15);
-        overflow: hidden; /* ВАЖНО для border-radius на изображениях */
+        overflow: hidden;
         display: flex;
         flex-direction: column;
-        height: 100%; /* КРИТИЧНО - равная высота карточек */
-        transition: all 0.3s ease;
+        height: 100%;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    .sight.visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .sight:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-lg);
-        border-color: rgba(255,255,255,0.3);
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        border-color: var(--color-accent);
     }
 
     /* ===== IMAGE WRAPPER (НОВОЕ!) ===== */
@@ -198,84 +285,169 @@
         transform: scale(1.02);
     }
 
-    /* ===== CAROUSEL (СОХРАНЕНО) ===== */
+    /* ===== CAROUSEL ===== */
     .carousel {
         position: relative;
         overflow: hidden;
-        margin-bottom: var(--space-md);
+        margin-bottom: var(--space-lg);
         border-radius: var(--radius-md);
+        animation: fadeIn 0.8s ease-out 0.2s backwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
     .carousel-track {
         display: flex;
-        transition: transform 0.35s ease-out;
+        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .carousel-slide {
         min-width: 100%;
         flex-shrink: 0;
-        padding: 0 0.25rem;
+        padding: 0 0.5rem;
     }
 
     .carousel .sight {
         margin-bottom: 0;
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .carousel-nav {
         display: flex;
         justify-content: center;
         gap: var(--space-md);
-        margin-top: var(--space-md);
+        margin-top: var(--space-lg);
     }
 
     .carousel-prev,
     .carousel-next {
-        padding: 0.6rem 1.2rem;
+        padding: 0.7rem 1.5rem;
         border-radius: var(--radius-sm);
         font-size: 1rem;
         font-weight: 600;
         cursor: pointer;
-        border: none;
-        background: rgba(255,255,255,0.25);
+        border: 1px solid rgba(255,255,255,0.2);
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
         color: #fff;
         font-family: inherit;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
     }
 
     .carousel-prev:hover,
     .carousel-next:hover {
-        background: rgba(255,255,255,0.4);
+        background: rgba(255,255,255,0.25);
+        transform: scale(1.05);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     }
 
     .carousel-prev:disabled,
     .carousel-next:disabled {
-        opacity: 0.5;
+        opacity: 0.4;
         cursor: not-allowed;
+        transform: scale(1);
+    }
+
+    .carousel-counter {
+        text-align: center;
+        margin-top: var(--space-sm);
+        color: rgba(255,255,255,0.8);
+        font-size: 0.9rem;
+        font-weight: 500;
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
         .container {
-            padding: var(--space-md);
+            padding: 1.2rem;
+        }
+
+        .back-link {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            margin-bottom: var(--space-md);
         }
 
         .sights-grid {
             grid-template-columns: 1fr;
-            gap: var(--space-md);
-        }
-
-        h1 {
-            font-size: 1.5rem;
+            gap: 1rem;
         }
 
         .sight-photo {
-            padding-top: 56.25%; /* 16:9 для мобильных */
+            padding-top: 56.25%;
+        }
+
+        .sight-content {
+            padding: 1rem;
+        }
+
+        .sight h3 {
+            font-size: 1.1rem;
+        }
+
+        .sight .meta {
+            font-size: 0.85rem;
+        }
+
+        .sight p {
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            font-size: 0.85rem;
+            padding: 0.45rem 0.9rem;
+        }
+
+        .carousel-prev,
+        .carousel-next {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .carousel-slide {
+            padding: 0 0.25rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+        }
+
+        .sight-content {
+            padding: 0.9rem;
+        }
+
+        .carousel-nav {
+            gap: 0.8rem;
         }
     }
 </style>
 
 </head>
 <body>
+    <!-- Background Effects -->
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    <div class="train-overlay"></div>
+
     <div class="container">
         <a href="tokyo.html" class="back-link">&larr; Назад к Токио</a>
         <h1>Что посмотреть в Токио</h1>
@@ -351,9 +523,10 @@
             <button type="button" class="carousel-prev" id="carouselPrev" aria-label="Назад">&larr; Назад</button>
             <button type="button" class="carousel-next" id="carouselNext" aria-label="Вперёд">Вперёд &rarr;</button>
         </div>
-        <p class="carousel-counter" id="carouselCounter" style="text-align:center;margin-top:0.5rem;color:rgba(255,255,255,0.8);font-size:0.9rem;"></p>
+        <p class="carousel-counter" id="carouselCounter"></p>
     </div>
     <script>
+        // Carousel functionality
         (function() {
             var track = document.getElementById('carouselTrack');
             var prev = document.getElementById('carouselPrev');
@@ -372,6 +545,26 @@
             if (prev) prev.addEventListener('click', function() { go(index - 1); });
             if (next) next.addEventListener('click', function() { go(index + 1); });
             go(0);
+        })();
+
+        // Scroll-triggered animations for sight cards
+        (function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Observe all sight cards outside carousel
+            var sights = document.querySelectorAll('.sights-grid .sight');
+            sights.forEach(function(sight) {
+                observer.observe(sight);
+            });
         })();
     </script>
 </body>

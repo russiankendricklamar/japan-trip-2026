@@ -105,10 +105,11 @@
     .sight-photo {
         position: relative;
         width: 100%;
-        padding-top: 60%; /* 5:3 aspect ratio */
+        padding-top: 56.25%; /* 16:9 - УМЕНЬШИЛ высоту */
         overflow: hidden;
         background: rgba(0,0,0,0.2);
-        margin: 0; /* Убрали margin-top */
+        margin: 0;
+        flex-shrink: 0; /* ДОБАВЛЕНО - не растягивается */
     }
 
     .sight-photo-img {
@@ -117,10 +118,9 @@
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover; /* КРИТИЧНО - обрезает изображение */
+        object-fit: cover;
         object-position: center;
         display: block;
-        margin: 0; /* Убрали margin-bottom */
     }
 
     /* Placeholder если нет изображения */
